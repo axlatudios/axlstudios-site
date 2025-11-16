@@ -3,10 +3,27 @@
     <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon base (ICO, auto-detected) -->
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+
+    <!-- PNG fallback -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png">
+
+    <!-- iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Opzionali -->
+    <!-- <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#EE237B"> -->
+    <meta name="msapplication-TileColor" content="#151415">
+    <meta name="theme-color" content="#151415">
+
     <title>AXL Studios</title>
     <link rel="stylesheet" href="./styles.css" />
     <meta name="robots" content="noindex" />
     </head>
+
     <body>
     <!-- Wrapper fisso a 1920px per fedeltà al pixel -->
     <div class="pp-wrapper">
@@ -31,10 +48,10 @@
         <a href="#stack" class="pp-nav-item" data-close>Toolkit</a>
         <a href="#stack" class="pp-nav-item" data-close>Faq</a>
         <a href="#contact" class="pp-nav-item pp-contact" data-close>
-            <span>Contattaci</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M17.9999 7.05...Z" fill="#FAFAFB"/>
-            </svg>
+          <span>Contattaci</span>
+          <svg width="12" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.0058 1.05C12.0058 0.784784 11.9004 0.530429 11.7129 0.342893C11.5254 0.155357 11.271 0.0500002 11.0058 0.0500002L3.0058 0C2.74058 0 2.48623 0.105357 2.29869 0.292893C2.11116 0.48043 2.0058 0.734784 2.0058 1C2.0058 1.26522 2.11116 1.51957 2.29869 1.70711C2.48623 1.89464 2.74058 2 3.0058 2H8.5658L0.295798 10.29C0.20207 10.383 0.127676 10.4936 0.0769072 10.6154C0.0261385 10.7373 0 10.868 0 11C0 11.132 0.0261385 11.2627 0.0769072 11.3846C0.127676 11.5064 0.20207 11.617 0.295798 11.71C0.388761 11.8037 0.499362 11.8781 0.621222 11.9289C0.743081 11.9797 0.873786 12.0058 1.0058 12.0058C1.13781 12.0058 1.26852 11.9797 1.39038 11.9289C1.51223 11.8781 1.62284 11.8037 1.7158 11.71L10.0058 3.42V9C10.0058 9.26522 10.1112 9.51957 10.2987 9.70711C10.4862 9.89464 10.7406 10 11.0058 10C11.271 10 11.5254 9.89464 11.7129 9.70711C11.9004 9.51957 12.0058 9.26522 12.0058 9V1.05Z" fill="currentColor"/>
+          </svg>
         </a>
         </nav>
 
@@ -69,16 +86,18 @@
             </p>
             </div>
 
-            <div class="pp-cta-row">
-            <a class="pp-btn" href="#about">
-                <span>Scopri di più</span>
-                <span class="pp-btn__badge" aria-hidden="true">
-                <svg class="pp-btn__icon" viewBox="0 0 24 24">
-                    <path d="M12 16.5c-.2 0-.39-.08-.53-.22l-5-5a.75.75 0 0 1 1.06-1.06l4.22 4.22V6.75a.75.75 0 0 1 1.5 0v7.69l4.22-4.22a.75.75 0 1 1 1.06 1.06l-5 5c-.14.14-.33.22-.53.22Z"/>
-                </svg>
-                </span>
-            </a>
-            </div>
+          <div class="pp-cta-row">
+                <a href="#about" class="pp-service-cta">
+                  <span>Scopri di più</span>
+                  <span class="pp-service-cta-badge" aria-hidden="true">
+                    <!-- freccia: usa currentColor così segue hover/pressed -->
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                </a>
+          </div>
+
         </div>
         </section>
         <!-- STORYTELLING / ABOUT BLOCK -->
@@ -86,8 +105,8 @@
         <div class="pp-story-inner">
             <!-- Titolo principale -->
             <h2 class="pp-story-title">
-            <span class="pp-story-title-plain">Un’unica</span>
-            <span class="pp-story-title-italic"> visione:</span><span class="pp-story-title-plain"></span><br>
+            <span class="pp-story-title-plain">Un’unica visione:</span>
+            <span class="pp-story-title-italic"> </span><span class="pp-story-title-plain"></span><br>
             <span class="pp-story-title-plain">far convivere </span>
             <span class="pp-story-title-accent">creatività</span>
             <span class="pp-story-title-plain"> e </span>
@@ -174,17 +193,22 @@
                 <article class="pp-service" role="option" aria-label="Web Design">
                 <div class="pp-service-inner">
                     <header class="pp-service-copy">
-                    <h3 class="pp-service-title">Web Design</h3>
+                    <h3 class="pp-service-title">Web <br> Design</h3>
                     <p class="pp-service-text">
                         Creiamo interfacce chiare, coerenti e visivamente d’impatto. Ogni layout nasce dall’incontro
                         tra estetica e funzionalità, con attenzione a dettagli, leggibilità e ritmo visivo. Il nostro
                         obiettivo è semplice: rendere il design non solo bello, ma anche utile e memorabile.
                     </p>
                     </header>
-                    <a href="#contact" class="pp-service-cta">
-                    <span>SCopri di più</span>
-                    <span class="pp-service-cta-badge" aria-hidden="true"></span>
-                    </a>
+                <a href="#contact" class="pp-service-cta">
+                  <span>Scopri di più</span>
+                  <span class="pp-service-cta-badge" aria-hidden="true">
+                    <!-- freccia: usa currentColor così segue hover/pressed -->
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                </a>
                 </div>
                 </article>
 
@@ -201,7 +225,11 @@
                     </header>
                     <a href="#contact" class="pp-service-cta">
                     <span>SCopri di più</span>
-                    <span class="pp-service-cta-badge" aria-hidden="true"></span>
+                    <span class="pp-service-cta-badge" aria-hidden="true">
+                      <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z" fill="currentColor"/>
+                    </svg>
+                    </span>
                     </a>
                 </div>
                 </article>
@@ -218,7 +246,11 @@
                     </header>
                     <a href="#contact" class="pp-service-cta">
                     <span>SCopri di più</span>
-                    <span class="pp-service-cta-badge" aria-hidden="true"></span>
+                    <span class="pp-service-cta-badge" aria-hidden="true">
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z" fill="currentColor"/>
+                    </svg>
+                    </span>
                     </a>
                 </div>
                 </article>
@@ -235,7 +267,11 @@
                     </header>
                     <a href="#contact" class="pp-service-cta">
                     <span>SCopri di più</span>
-                    <span class="pp-service-cta-badge" aria-hidden="true"></span>
+                    <span class="pp-service-cta-badge" aria-hidden="true">
+                      <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z" fill="currentColor"/>
+                    </svg>
+                    </span>
                     </a>
                 </div>
                 </article>
@@ -252,7 +288,11 @@
                     </header>
                     <a href="#contact" class="pp-service-cta">
                     <span>SCopri di più</span>
-                    <span class="pp-service-cta-badge" aria-hidden="true"></span>
+                    <span class="pp-service-cta-badge" aria-hidden="true">
+                      <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z" fill="currentColor"/>
+                    </svg>
+                    </span>
                     </a>
                 </div>
                 </article>
@@ -282,14 +322,19 @@
                 Lorem ipsum dolor sit amet consectetur. Donec gravida condimentum accumsan nunc. Ultrices tempor augue odio at scelerisque.
                 Sit odio in viverra curabitur vitae sed. Pellentesque sagittis vulputate aliquet sagittis venenatis.
                 </p>
-                <a class="pp-project-cta" href="#contact">
-                <span>SCopri di più</span>
-                <span class="pp-project-cta-badge" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="#FAFAFB" aria-hidden="true">
-                    <rect width="12.01" height="12.01" x="2" y="2" rx="2"></rect>
+                <a href="#contact"
+                  class="pp-service-cta"
+                  aria-label="Scopri di più"
+                  style="display:inline-flex; align-self:flex-start; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+                  <span>Scopri di più</span>
+                  <span class="pp-service-cta-badge" aria-hidden="true">
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z"
+                            fill="currentColor"/>
                     </svg>
-                </span>
+                  </span>
                 </a>
+
             </div>
             </article>
 
@@ -307,13 +352,17 @@
                     Sit odio in viverra curabitur vitae sed. Pellentesque sagittis vulputate aliquet sagittis venenatis.
                 </p>
                 </div>
-                <a class="pp-project-cta" href="#contact">
-                <span>SCopri di più</span>
-                <span class="pp-project-cta-badge" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="#FAFAFB" aria-hidden="true">
-                    <rect width="12.01" height="12.01" x="2" y="2" rx="2"></rect>
+                <a href="#contact"
+                  class="pp-service-cta"
+                  aria-label="Scopri di più"
+                  style="display:inline-flex; align-self:flex-start; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+                  <span>Scopri di più</span>
+                  <span class="pp-service-cta-badge" aria-hidden="true">
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z"
+                            fill="currentColor"/>
                     </svg>
-                </span>
+                  </span>
                 </a>
             </aside>
             </article>
@@ -332,13 +381,17 @@
                     Sit odio in viverra curabitur vitae sed. Pellentesque sagittis vulputate aliquet sagittis venenatis.
                 </p>
                 </div>
-                <a class="pp-project-cta" href="#contact">
-                <span>SCopri di più</span>
-                <span class="pp-project-cta-badge" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="#FAFAFB" aria-hidden="true">
-                    <rect width="12.01" height="12.01" x="2" y="2" rx="2"></rect>
+                <a href="#contact"
+                  class="pp-service-cta"
+                  aria-label="Scopri di più"
+                  style="display:inline-flex; align-self:flex-start; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+                  <span>Scopri di più</span>
+                  <span class="pp-service-cta-badge" aria-hidden="true">
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z"
+                            fill="currentColor"/>
                     </svg>
-                </span>
+                  </span>
                 </a>
             </aside>
             </article>
@@ -399,17 +452,22 @@
         </div>
         </div>
     </article>
-
     </div>
-
-
-        <!-- CTA verso Toolkit -->
-        <a href="#stack" class="pp-team-cta">
-            <span>Dai un’occhiata al nostro toolkit</span>
-            <span class="pp-team-cta-badge" aria-hidden="true">
-            <span class="pp-cta-chev"></span>
-            </span>
-        </a>
+    <div style="padding-top: 80px;">
+      <!-- CTA verso Toolkit (centrata) -->
+      <a href="#contact" 
+        class="pp-service-cta"
+        aria-label="Scopri di più"
+        style="display:flex; margin:24px auto 0; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+        <span>Dai un’occhiata al nostro toolkit</span>
+        <span class="pp-service-cta-badge" aria-hidden="true">
+          <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z"
+                  fill="currentColor"/>
+          </svg>
+        </span>
+      </a>
+      </div>
         </section>
 
 
@@ -431,82 +489,93 @@
         </div>
 
         <!-- CATEGORY 1 -->
-        <div class="pp-toolkit-block">
-            <div class="pp-toolkit-copy">
-            <h3 class="pp-toolkit-block-title">Design &amp; Prototyping</h3>
-            <p>
-                Strumenti per dare forma a interfacce pulite, coerenti e dinamiche.
-                Dal concept alla prototipazione, tutto passa per tool che fondono
-                creatività e precisione.
-            </p>
-            </div>
-            <div class="pp-toolkit-icons">
-            <img src="./assets/icons/figma.svg" alt="Figma" />
-            <img src="./assets/icons/ai.svg" alt="Adobe Illustrator" />
-            <img src="./assets/icons/ps.svg" alt="Adobe Photoshop" />
-            <img src="./assets/icons/id.svg" alt="Adobe InDesign" />
-            <img src="./assets/icons/be.svg" alt="Behance" />
-            <img src="./assets/icons/pinterest.svg" alt="Pinterest" />
-            <img src="./assets/icons/notion.svg" alt="Notion" />
-            <img src="./assets/icons/openai.svg" alt="ChatGPT" />
-            </div>
-        </div>
-        <div class="pp-divider"></div>
 
-        <!-- CATEGORY 2 -->
         <div class="pp-toolkit-block">
             <div class="pp-toolkit-copy">
             <h3 class="pp-toolkit-block-title">Code &amp; Development</h3>
-            <p>
-                Strumenti per dare forma a interfacce pulite, coerenti e dinamiche.
-                Dal concept alla prototipazione, tutto passa per tool che fondono
+            <p >
+                Strumenti per dare forma a interfacce pulite, <br> coerenti e dinamiche.
+                Dal concept alla <br> prototipazione, tutto passa per tool che <br> fondono
                 creatività e precisione.
             </p>
             </div>
             <div class="pp-toolkit-icons">
-            <img src="./assets/icons/vscode.svg" alt="VS Code" />
-            <img src="./assets/icons/github.svg" alt="GitHub" />
-            <img src="./assets/icons/typescript.svg" alt="TypeScript" />
-            <img src="./assets/icons/nodejs.svg" alt="Node.js" />
-            <img src="./assets/icons/html5.svg" alt="HTML5" />
-            <img src="./assets/icons/react.svg" alt="React" />
-            <img src="./assets/icons/tailwind.svg" alt="TailwindCSS" />
-            <img src="./assets/icons/js.svg" alt="JavaScript" />
+            <img src="./assets/icons/vscode.svg"      alt="VS Code" />
+            <img src="./assets/icons/github.svg"      alt="GitHub" />
+            <img src="./assets/icons/ts.svg"  alt="TypeScript" />
+            <img src="./assets/icons/nodejs.svg"      alt="Node.js" />
+            <img src="./assets/icons/html5.svg"       alt="HTML5" />
+            <img src="./assets/icons/react.svg"       alt="React" />
+            <img src="./assets/icons/tailwind.svg"    alt="TailwindCSS" />
+            <img src="./assets/icons/js.svg"          alt="JavaScript" />
             </div>
         </div>
         <div class="pp-divider"></div>
 
+    
+        <!-- CATEGORY 2 -->
+
+            <div class="pp-toolkit-block">
+            <div class="pp-toolkit-copy">
+            <h3 class="pp-toolkit-block-title">Design &amp; Prototyping</h3>
+            <p>
+                I tool che trasformano i layout in 
+                esperienze <br> interattive. Dallo sviluppo front-end <br>
+                all’ottimizzazione del codice, ogni 
+                progetto è <br> scritto per durare e funzionare con fluidità.
+            </p>
+            </div>
+            <div class="pp-toolkit-icons">
+            <img src="./assets/icons/figma.svg"           alt="Figma" />
+            <img src="./assets/icons/illustrator.svg"     alt="Adobe Illustrator" />
+            <img src="./assets/icons/photoshop.svg"       alt="Adobe Photoshop" />
+            <img src="./assets/icons/adobeIndesign.svg"   alt="Adobe InDesign" />
+            <img src="./assets/icons/behance.svg"         alt="Behance" />
+            <img src="./assets/icons/pinterest.svg"       alt="Pinterest" />
+            <img src="./assets/icons/notion.svg"          alt="Notion" />
+            <img src="./assets/icons/openai.svg"          alt="ChatGPT" />
+            </div>
+        </div>
+        <div class="pp-divider"></div>
+
+
         <!-- CATEGORY 3 -->
         <div class="pp-toolkit-block pp-toolkit-block--social">
-        <div class="pp-toolkit-copy">
+            <div class="pp-toolkit-copy">
             <h3 class="pp-toolkit-block-title">Social &amp; Strategy</h3>
             <p>
-            Software e piattaforme per analizzare, creare e gestire contenuti che connettono davvero.
-            Dalla pianificazione alla pubblicazione, tutto nasce da metodo e visione.
+                Software e piattaforme per analizzare, creare e <br> gestire contenuti che connettono davvero. <br>
+                Dalla pianificazione alla pubblicazione, tutto <br> nasce da metodo e visione.
             </p>
-        </div>
+            </div>
 
-        <div class="pp-toolkit-icons pp-toolkit-icons--wide">
-            <img src="./assets/icons/meta.svg"     alt="Meta Business Suite" />
-            <img src="./assets/icons/linkedin.svg" alt="LinkedIn" />
-            <img src="./assets/icons/google.svg"   alt="Google (Analytics, Ads, Business Profile)" />
-            <img src="./assets/icons/openai.svg"   alt="ChatGPT" />
-            <img src="./assets/icons/notion.svg"   alt="Notion" />
-            <img src="./assets/icons/canva.svg"    alt="Canva" />
-            <img src="./assets/icons/pinterest.svg" alt="Pinterest" />
-        </div>
+            <div class="pp-toolkit-icons pp-toolkit-icons--wide">
+            <img src="./assets/icons/meta.svg"       alt="Meta Business Suite" />
+            <img src="./assets/icons/linkedin.svg"   alt="LinkedIn" />
+            <img src="./assets/icons/google.svg"     alt="Google (Analytics, Ads, Business Profile)" />
+            <img src="./assets/icons/openai.svg"     alt="ChatGPT" />
+            <img src="./assets/icons/notion.svg"     alt="Notion" />
+            <img src="./assets/icons/canva.svg"      alt="Canva" />
+            <img src="./assets/icons/pinterest.svg"  alt="Pinterest" />
+            <img src="./assets/icons/figma.svg"           alt="Figma" />
+            </div>
 
-        <!-- CTA centrale -->
-        <div class="pp-toolkit-cta">
-            <a class="pp-toolkit-cta-btn" href="#faq" aria-label="Vai alle FAQ">
-            <span>VUOI SAPERNE DI PIÙ? LEGGI LE FAQ</span>
-            <span class="pp-toolkit-cta-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                <path d="M12 7v10m0 0l-4-4m4 4l4-4" stroke="#FAFAFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
+            <!-- CTA centrale -->
+            <div class="pp-toolkit-cta">
+            <!-- CTA Toolkit centrata -->
+            <a class="pp-toolkit-cta-btn"
+              href="#faq"
+              aria-label="Vai alle FAQ"
+              style="display:flex; margin:24px auto 0; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+              <span>VUOI SAPERNE DI PIÙ? LEGGI LE FAQ</span>
+              <span class="pp-toolkit-cta-badge" aria-hidden="true">
+                    <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path d="M8.181 0C8.49042 0 8.78717 0.122917 9.00596 0.341709C9.22475 0.560502 9.34767 0.857248 9.34767 1.16667V14.6837L14.3562 9.67517C14.5762 9.46265 14.8709 9.34506 15.1768 9.34772C15.4827 9.35037 15.7753 9.47307 15.9916 9.68938C16.2079 9.90569 16.3306 10.1983 16.3333 10.5042C16.3359 10.8101 16.2184 11.1048 16.0058 11.3248L9.00584 18.3248C8.78705 18.5436 8.49036 18.6664 8.181 18.6664C7.87164 18.6664 7.57495 18.5436 7.35617 18.3248L0.35617 11.3248C0.244741 11.2172 0.155862 11.0885 0.094718 10.9461C0.0335742 10.8038 0.00139017 10.6507 4.40499e-05 10.4958C-0.00130207 10.3409 0.0282163 10.1873 0.0868774 10.0439C0.145538 9.90051 0.232167 9.77025 0.341709 9.66071C0.45125 9.55117 0.581511 9.46454 0.72489 9.40588C0.868269 9.34722 1.0219 9.3177 1.1768 9.31904C1.33171 9.32039 1.4848 9.35257 1.62714 9.41372C1.76948 9.47486 1.89821 9.56374 2.00584 9.67517L7.01434 14.6837V1.16667C7.01434 0.857248 7.13725 0.560502 7.35604 0.341709C7.57484 0.122917 7.87158 0 8.181 0Z"
+                            fill="currentColor"/>
+                    </svg>
+              </span>
             </a>
-        </div>
+            </div>
         </div>
         </section>
 
@@ -529,17 +598,19 @@
                 <span class="pp-faq-q">Che tipo di progetti realizzate?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-1" class="pp-faq-a" role="region" aria-labelledby="faq-btn-1" hidden>
+            <div id="faq-1" hidden style="margin-top: -16px; padding-bottom: 30px;">
                 Realizziamo landing ad alte performance, siti corporate, e web-app custom. Design in Figma → handoff → sviluppo (React/Angular/Tailwind) con QA e ottimizzazioni.
             </div>
             </article>
+
+            
 
             <article class="pp-faq-row" role="listitem">
             <button class="pp-faq-toggle" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2">
                 <span class="pp-faq-q">Lavorate solo con aziende o anche con privati?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-2" class="pp-faq-a" role="region" aria-labelledby="faq-btn-2" hidden>
+            <div id="faq-2" hidden style="margin-top: -16px; padding-bottom: 30px;">
                 Principalmente PMI, startup e professionisti. Se il progetto ha obiettivi chiari e valore, lo prendiamo in carico a prescindere dalla dimensione.
             </div>
             </article>
@@ -549,7 +620,7 @@
                 <span class="pp-faq-q">Quanto dura in media un progetto?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-3" class="pp-faq-a" role="region" aria-labelledby="faq-btn-3" hidden>
+            <div id="faq-3" hidden style="margin-top: -16px; padding-bottom: 30px;">
                 Indicativamente: landing 2–3 settimane, sito corporate 4–6 settimane; web-app su sprint (roadmap condivisa).
             </div>
             </article>
@@ -559,7 +630,7 @@
                 <span class="pp-faq-q">Lavorate anche da remoto?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-4" class="pp-faq-a" role="region" aria-labelledby="faq-btn-4" hidden>
+            <div id="faq-4" hidden style="margin-top: -16px; padding-bottom: 30px;">
                 Sì. Processi e tool sono pensati per collaborazioni full-remote; facciamo meeting in presenza quando serve.
             </div>
             </article>
@@ -569,7 +640,7 @@
                 <span class="pp-faq-q">Offrite anche manutenzione o supporto post-lancio?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-5" class="pp-faq-a" role="region" aria-labelledby="faq-btn-5" hidden>
+            <div id="faq-5"  hidden style="margin-top: -16px; padding-bottom: 30px;">
                 Certo: piani di supporto, piccoli sviluppi evolutivi, SEO on-page di base e monitoraggio performance.
             </div>
             </article>
@@ -578,99 +649,120 @@
 
 <!-- ==================== CONTACT ==================== -->
 <section id="contact" class="pp-contact-section">
-  <div class="pp-contact-head">
-    <h2 id="contactTitle" class="pp-contact-title">Contatti</h2>
-    <p class="pp-contact-desc">
-      Hai un progetto, un’idea o una semplice curiosità? <br>
-      Scrivici — ti risponderemo al più presto per capire come possiamo trasformarla in qualcosa di concreto.
-    </p>
-  </div>
+  <div class="pp-contact-inner">
+    <div class="pp-contact-head">
+      <h2 id="contactTitle" class="pp-contact-title">Contatti</h2>
+      <p class="pp-contact-desc">
+        Hai un progetto, un’idea o una semplice curiosità? <br>
+        Scrivici — ti risponderemo al più presto per capire come possiamo trasformarla in qualcosa di concreto.
+      </p>
+    </div>
 
-  <!-- Row: Email + Social (card glass) -->
-  <div class="pp-contact-toprow">
-    <a class="pp-contact-card" href="mailto:axl@studios.com">
-      <span class="pp-card-ic" aria-hidden="true"></span>
-      <span class="pp-card-label">E-Mail</span>
-      <span class="pp-card-val">axl@studios.com</span>
-    </a>
+    <!-- Row: Email + Social (card glass) -->
+    <div class="pp-contact-toprow">
+      <a class="pp-contact-card" href="mailto:axl@studios.com">
+        <span class="pp-card-ic" aria-hidden="true"></span>
+        <span class="pp-card-label">E-Mail</span>
+        <span class="pp-card-val">axl@studios.com</span>
+      </a>
 
-    <div class="pp-contact-card" role="group" aria-label="Social">
-      <span class="pp-card-ic" aria-hidden="true"></span>
-      <span class="pp-card-label">Social</span>
-      <div class="pp-card-social">
-        <a aria-label="Instagram" href="#" class="pp-social-btn">IG</a>
-        <a aria-label="Facebook"  href="#" class="pp-social-btn">Fb</a>
-        <a aria-label="X"         href="#" class="pp-social-btn">X</a>
-        <a aria-label="LinkedIn"  href="#" class="pp-social-btn">in</a>
-        <a aria-label="Facebook p." href="#" class="pp-social-btn">F</a>
+      <div class="pp-contact-card" role="group" aria-label="Social">
+        <span class="pp-card-ic" aria-hidden="true"></span>
+        <span class="pp-card-label">Social</span>
+        <div class="pp-card-social">
+          <a aria-label="Instagram" href="#" class="pp-social-btn">IG</a>
+          <a aria-label="Facebook"  href="#" class="pp-social-btn">Fb</a>
+          <a aria-label="X"         href="#" class="pp-social-btn">X</a>
+          <a aria-label="LinkedIn"  href="#" class="pp-social-btn">in</a>
+          <a aria-label="Facebook p." href="#" class="pp-social-btn">F</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Form 2 colonne -->
-  <form id="axlContactForm" class="pp-form" method="post" novalidate>
+    <!-- Form 2 colonne -->
+    <form id="axlContactForm" class="pp-form" method="post" novalidate>
 
-    <div class="pp-field">
-      <label for="c_nome" class="pp-label">Nome</label>
-      <input id="c_nome" name="nome" type="text" class="pp-input" placeholder="Placeholder" required>
-    </div>
+      <div class="pp-field">
+        <label for="c_nome" class="pp-label">Nome</label>
+        <input id="c_nome" name="nome" type="text" class="pp-input"
+              placeholder="Es. Alfredo"
+              autocomplete="given-name" autocapitalize="words" spellcheck="false" required>
+      </div>
 
     <div class="pp-field">
       <label for="c_cognome" class="pp-label">Cognome</label>
-      <input id="c_cognome" name="cognome" type="text" class="pp-input" placeholder="Placeholder" required>
+      <input id="c_cognome" name="cognome" type="text" class="pp-input"
+            placeholder="Es. Esposito"
+            autocomplete="family-name" autocapitalize="words" spellcheck="false" required>
     </div>
 
     <div class="pp-field">
       <label for="c_email" class="pp-label">E-Mail</label>
-      <input id="c_email" name="email" type="email" class="pp-input" placeholder="Placeholder" required>
+      <input id="c_email" name="email" type="email" class="pp-input"
+            placeholder="esempio@azienda.it"
+            autocomplete="email" inputmode="email" required>
     </div>
+
 
     <div class="pp-field">
       <label for="c_tel" class="pp-label">Telefono</label>
-      <input id="c_tel" name="telefono" type="tel" class="pp-input" placeholder="Placeholder">
+      <input id="c_tel" name="telefono" type="tel" class="pp-input"
+            placeholder="Es. +39 333 123 4567"
+            autocomplete="tel" inputmode="tel"
+            pattern="^\+?[0-9][0-9\s\-]{7,}$"
+            title="Inserisci un numero valido (consentiti spazi e trattini)">
     </div>
 
-    <div class="pp-field pp-field--full">
-      <label for="c_servizio" class="pp-label">Servizio</label>
-      <div class="pp-selectwrap">
-        <select id="c_servizio" name="servizio" class="pp-select">
-          <option value="" selected>Dropdown menu</option>
-          <option>Web Design</option>
-          <option>Sviluppo Web</option>
-          <option>Sito Corporate</option>
-          <option>Landing Page</option>
-          <option>Restyling</option>
-        </select>
-        <span class="pp-select-caret" aria-hidden="true"></span>
+        <div class="pp-field pp-field--full">
+        <label for="c_servizio" class="pp-label">Servizio</label>
+        <div class="pp-selectwrap">
+            <select id="c_servizio" name="servizio" class="pp-select" required>
+            <option value="" selected disabled hidden>Seleziona…</option>
+            <option>Web Design</option>
+            <option>Sviluppo Web</option>
+            <option>Sito Corporate</option>
+            <option>Landing Page</option>
+            <option>Restyling</option>
+            </select>
+        </div>
+        </div>
+
+      <div class="pp-field pp-field--full">
+        <label for="c_msg" class="pp-label">Messaggio</label>
+        <textarea id="c_msg" name="message" rows="6" class="pp-textarea" placeholder="Scrivi qui…"></textarea>
       </div>
-    </div>
 
-    <div class="pp-field pp-field--full">
-      <label for="c_msg" class="pp-label">Messaggio</label>
-      <textarea id="c_msg" name="message" rows="6" class="pp-textarea" placeholder="Scrivi qui…"></textarea>
-    </div>
+      <div class="pp-consent">
+        <input id="c_cons" name="consent" type="checkbox" class="pp-checkbox">
+        <label for="c_cons" class="pp-consent-label">
+          Acconsento al trattamento dei dati secondo l’Informativa Privacy e per essere ricontattato.
+        </label>
+      </div>
 
-    <div class="pp-consent">
-      <input id="c_cons" name="consent" type="checkbox" class="pp-checkbox">
-      <label for="c_cons" class="pp-consent-label">
-        Acconsento al trattamento dei dati secondo l’Informativa Privacy e per essere ricontattato.
-      </label>
-    </div>
+      <div class="pp-form-foot">
+        <button type="submit" class="pp-btn" id="c_submit">
+          <span>Invia</span>
+          <span class="pp-btn__badge" aria-hidden="true">
+            <!-- freccia 12x12 che segue currentColor -->
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <path d="M12.0058 1.05C12.0058 0.784784 11.9004 0.530429 11.7129 0.342893C11.5254 0.155357 11.271 0.0500002 11.0058 0.0500002L3.0058 0C2.74058 0 2.48623 0.105357 2.29869 0.292893C2.11116 0.48043 2.0058 0.734784 2.0058 1C2.0058 1.26522 2.11116 1.51957 2.29869 1.70711C2.48623 1.89464 2.74058 2 3.0058 2H8.5658L0.295798 10.29C0.20207 10.383 0.127676 10.4936 0.0769072 10.6154C0.0261385 10.7373 0 10.868 0 11C0 11.132 0.0261385 11.2627 0.0769072 11.3846C0.127676 11.5064 0.20207 11.617 0.295798 11.71C0.388761 11.8037 0.499362 11.8781 0.621222 11.9289C0.743081 11.9797 0.873786 12.0058 1.0058 12.0058C1.13781 12.0058 1.26852 11.9797 1.39038 11.9289C1.51223 11.8781 1.62284 11.8037 1.7158 11.71L10.0058 3.42V9C10.0058 9.26522 10.1112 9.51957 10.2987 9.70711C10.4862 9.89464 10.7406 10 11.0058 10C11.271 10 11.5254 9.89464 11.7129 9.70711C11.9004 9.51957 12.0058 9.26522 12.0058 9V1.05Z"
+                    fill="currentColor"/>
+            </svg>
+          </span>
+        </button>
+      </div>
 
-    <div class="pp-form-foot">
-      <button type="submit" class="pp-btn" id="c_submit">
-        <span>Invia</span><span class="pp-btn__badge" aria-hidden="true"></span>
-      </button>
-    </div>
 
-    <p class="pp-form-msg pp-form-msg--ok" hidden>Messaggio inviato! Ti ricontatteremo a breve.</p>
-    <p class="pp-form-msg pp-form-msg--err" hidden>Invio non riuscito. Controlla i campi.</p>
-  </form>
+      <p class="pp-form-msg pp-form-msg--ok" hidden>Messaggio inviato! Ti ricontatteremo a breve.</p>
+      <p class="pp-form-msg pp-form-msg--err" hidden>Invio non riuscito. Controlla i campi.</p>
+    </form>
+  </div>
 </section>
 
 
         
-    </div>
+
 
 
 
@@ -863,51 +955,194 @@
 })();
 </script>
 
-<footer class="pp-footer" role="contentinfo">
-  <div class="pp-foot-inner">
-    <!-- Col 1: word-mark -->
-    <a class="pp-foot-brand" href="#top" aria-label="AXL Studios">
-      <!-- usa il tuo SVG/PNG del logotipo -->
-      <img src="./assets/logo-wordmark.svg" alt="AXL Studios" loading="lazy">
-    </a>
+<script>
+(function(){
+  function enhanceSelect(sel){
+    if(sel.dataset.enhanced) return;
+    sel.dataset.enhanced = "true";
+    sel.classList.add("pp-select--enhance");
 
-    <!-- Col 2: About -->
-    <nav class="pp-foot-col" aria-label="About AXL">
-      <h3 class="pp-foot-title">About AXL</h3>
-      <ul class="pp-foot-list">
-        <li><a href="#about">Chi siamo</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#values">Valori</a></li>
-      </ul>
-    </nav>
+    // Aggiungo una classe al wrapper per spegnere la freccia CSS
+    const wrap = document.createElement("div");
+    wrap.className = "pp-sel";
+    wrap.setAttribute("role","combobox");
+    wrap.setAttribute("aria-haspopup","listbox");
+    wrap.setAttribute("aria-expanded","false");
+    // segnala "enhanced" al container originale
+    sel.closest(".pp-selectwrap")?.classList.add("is-enhanced");
 
-    <!-- Col 3: Servizi -->
-    <nav class="pp-foot-col" aria-label="Servizi">
-      <h3 class="pp-foot-title">Servizi</h3>
-      <ul class="pp-foot-list">
-        <li><a href="#services">Prodotti digitali</a></li>
-        <li><a href="#services">Branding</a></li>
-        <li><a href="#services">Siti & Ecommerce</a></li>
-      </ul>
-    </nav>
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pp-sel__btn";
+    // testo iniziale: usa option selezionata o fallback "Seleziona…"
+    btn.textContent = sel.options[sel.selectedIndex]?.text || sel.getAttribute("placeholder") || "Seleziona…";
+    wrap.appendChild(btn);
 
-    <!-- Col 4: Progetti/CTA -->
-    <nav class="pp-foot-col" aria-label="Progetti">
-      <h3 class="pp-foot-title">Progetti</h3>
-      <ul class="pp-foot-list">
-        <li><a href="#projects">Portfolio</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contatti</a></li>
-      </ul>
-    </nav>
+    const list = document.createElement("ul");
+    list.className = "pp-sel__list";
+    list.setAttribute("role","listbox");
+    wrap.appendChild(list);
+
+    // CREA OPZIONI, SALTANDO placeholder/disabled/empty
+    [...sel.options].forEach((opt)=>{
+      if (opt.disabled || opt.value === "") return;    // <<— evita il placeholder
+      const li = document.createElement("li");
+      li.className = "pp-sel__opt";
+      li.setAttribute("role","option");
+      li.setAttribute("data-value", opt.value);
+      li.textContent = opt.text;
+      if(opt.selected) li.setAttribute("aria-selected","true");
+      li.addEventListener("click", ()=>{
+        sel.value = opt.value;               // aggiorna la select per il submit
+        btn.textContent = opt.text;
+        list.querySelectorAll(".pp-sel__opt[aria-selected]").forEach(n=>n.removeAttribute("aria-selected"));
+        li.setAttribute("aria-selected","true");
+        wrap.dataset.open = "false";
+        wrap.setAttribute("aria-expanded","false");
+        sel.dispatchEvent(new Event("change", {bubbles:true}));
+      });
+      list.appendChild(li);
+    });
+
+    btn.addEventListener("click", ()=>{
+      const open = wrap.dataset.open === "true";
+      wrap.dataset.open = String(!open);
+      wrap.setAttribute("aria-expanded", String(!open));
+    });
+
+    // chiudi al di fuori / ESC
+    document.addEventListener("click", (e)=>{
+      if(!wrap.contains(e.target)){
+        wrap.dataset.open = "false";
+        wrap.setAttribute("aria-expanded","false");
+      }
+    });
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape"){
+        wrap.dataset.open = "false";
+        wrap.setAttribute("aria-expanded","false");
+        btn.focus();
+      }
+    });
+
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel); // conserva nel DOM per la submission
+  }
+
+  // attiva solo le select che vuoi
+  document.querySelectorAll("select.pp-select.pp-select--custom, select#c_servizio").forEach(enhanceSelect);
+})();
+</script>
+
+<script>
+(() => {
+  // Cambia qui se vuoi un'ancora nella stessa pagina: const HOME_HREF = '#top';
+  const HOME_HREF = '/';
+
+  const logo = document.querySelector('.pp-nav-left .pp-logo');
+  if (!logo) return;
+
+  // Accessibilità e UX
+  logo.setAttribute('role', 'link');
+  logo.setAttribute('tabindex', '0');
+  logo.setAttribute('aria-label', 'AXL Studios — Home');
+
+  const goHome = () => {
+    // Se vuoi solo scroll in cima quando sei già nella home:
+    if (HOME_HREF === '#top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.location.assign(HOME_HREF);
+    }
+  };
+
+  logo.addEventListener('click', (e) => { e.preventDefault(); goHome(); });
+  logo.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
+  });
+})();
+</script>
+
+
+<footer class="axl-footer" role="contentinfo" aria-labelledby="axl-footer-claim">
+  <!-- 1) Logo esteso -->
+  <div class="axl-footer__hero">
+    <img
+      class="axl-footer__logo-extended"
+      src="assets/Logotipo_Esteso_White.svg"
+      alt="axl studios"
+      width="1920"
+      height="420"
+      decoding="async"
+      loading="lazy"
+    />
   </div>
 
-  <div class="pp-foot-bottom">
-    <p class="pp-foot-tag">Un’unica <em>visione</em> per far crescere il tuo progetto.</p>
-    <div class="pp-foot-meta">
-      <span>© AXL Studios</span>
-      <a href="#privacy">Privacy</a>
-      <a href="#cookie">Cookie</a>
+  <!-- 2) Divisore -->
+  <hr class="axl-footer__divider" aria-hidden="true" />
+
+  <!-- 3) Contenuto -->
+  <div class="axl-footer__grid">
+    <!-- 3a) Brand + social -->
+    <div class="axl-footer__brand">
+      <img
+        class="axl-footer__brandmark"
+        src="assets/Horizontal_Logo_No_Payoff_Light.svg"
+        alt="axl"
+        width="156"
+        height="48"
+        decoding="async"
+        loading="lazy"
+      />
+
+      <nav class="axl-footer__social" aria-label="Social">
+        <a href="#" aria-label="Instagram" class="sbtn">
+          <img src="assets/icons/instagram.svg" alt="" class="sbtn__icon" />
+        </a>
+        <a href="#" aria-label="Facebook" class="sbtn">
+          <img src="assets/icons/Facebook.svg" alt="" class="sbtn__icon" />
+        </a>
+        <a href="#" aria-label="X" class="sbtn">
+          <img src="assets/icons/x.svg" alt="" class="sbtn__icon" />
+        </a>
+        <a href="#" aria-label="LinkedIn" class="sbtn">
+          <img src="assets/icons/linkedin.svg" alt="" class="sbtn__icon" />
+        </a>
+        <a href="#" aria-label="Fiverr" class="sbtn">
+          <img src="assets/icons/Fiverr.svg" alt="" class="sbtn__icon" />
+        </a>
+      </nav>
+    </div>
+
+    <!-- 3b) Menu -->
+    <nav class="axl-footer__nav" aria-label="Footer">
+      <a class="navlink" href="#about">About AXL</a>
+      <a class="navlink" href="#servizi">Servizi</a>
+      <a class="navlink" href="#progetti">Progetti</a>
+      <a class="navlink" href="#team">Team</a>
+      <a class="navlink" href="#strumenti">Strumenti</a>
+      <a class="navlink navlink--out" href="#contatti" aria-label="Contattaci">
+        Contattaci
+          <svg width="12" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.0058 1.05C12.0058 0.784784 11.9004 0.530429 11.7129 0.342893C11.5254 0.155357 11.271 0.0500002 11.0058 0.0500002L3.0058 0C2.74058 0 2.48623 0.105357 2.29869 0.292893C2.11116 0.48043 2.0058 0.734784 2.0058 1C2.0058 1.26522 2.11116 1.51957 2.29869 1.70711C2.48623 1.89464 2.74058 2 3.0058 2H8.5658L0.295798 10.29C0.20207 10.383 0.127676 10.4936 0.0769072 10.6154C0.0261385 10.7373 0 10.868 0 11C0 11.132 0.0261385 11.2627 0.0769072 11.3846C0.127676 11.5064 0.20207 11.617 0.295798 11.71C0.388761 11.8037 0.499362 11.8781 0.621222 11.9289C0.743081 11.9797 0.873786 12.0058 1.0058 12.0058C1.13781 12.0058 1.26852 11.9797 1.39038 11.9289C1.51223 11.8781 1.62284 11.8037 1.7158 11.71L10.0058 3.42V9C10.0058 9.26522 10.1112 9.51957 10.2987 9.70711C10.4862 9.89464 10.7406 10 11.0058 10C11.271 10 11.5254 9.89464 11.7129 9.70711C11.9004 9.51957 12.0058 9.26522 12.0058 9V1.05Z" fill="currentColor"/>
+          </svg>
+      </a>
+    </nav>
+
+    <!-- 3c) Claim + CTA -->
+    <div class="axl-footer__cta">
+      <h2 id="axl-footer-claim" class="axl-footer__claim">
+        Un’unica <em>visione</em>: far convivere
+        <strong class="accent">creatività</strong> e
+        <strong class="accent">tecnologia</strong>.
+      </h2>
+
+      <a class="axl-btn" href="#contatti">
+        <span>Contattaci</span>
+           <svg width="12" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.0058 1.05C12.0058 0.784784 11.9004 0.530429 11.7129 0.342893C11.5254 0.155357 11.271 0.0500002 11.0058 0.0500002L3.0058 0C2.74058 0 2.48623 0.105357 2.29869 0.292893C2.11116 0.48043 2.0058 0.734784 2.0058 1C2.0058 1.26522 2.11116 1.51957 2.29869 1.70711C2.48623 1.89464 2.74058 2 3.0058 2H8.5658L0.295798 10.29C0.20207 10.383 0.127676 10.4936 0.0769072 10.6154C0.0261385 10.7373 0 10.868 0 11C0 11.132 0.0261385 11.2627 0.0769072 11.3846C0.127676 11.5064 0.20207 11.617 0.295798 11.71C0.388761 11.8037 0.499362 11.8781 0.621222 11.9289C0.743081 11.9797 0.873786 12.0058 1.0058 12.0058C1.13781 12.0058 1.26852 11.9797 1.39038 11.9289C1.51223 11.8781 1.62284 11.8037 1.7158 11.71L10.0058 3.42V9C10.0058 9.26522 10.1112 9.51957 10.2987 9.70711C10.4862 9.89464 10.7406 10 11.0058 10C11.271 10 11.5254 9.89464 11.7129 9.70711C11.9004 9.51957 12.0058 9.26522 12.0058 9V1.05Z" fill="currentColor"/>
+          </svg>
+      </a>
     </div>
   </div>
 </footer>

@@ -80,7 +80,43 @@ body::before{
   background:linear-gradient(90deg, rgba(250,250,251,.22) 0%, rgba(250,250,251,.08) 20%, rgba(250,250,251,.08) 80%, rgba(250,250,251,.22) 100%);
   pointer-events:none;
 }
-.pp-logo{ width:78px; height:32px; background:url("./assets/logo.svg") center/contain no-repeat; }
+/* === NAV — Logo: da bianco → rosa (senza underline) === */
+/* Usa la SVG come maschera e colora via background */
+.pp-logo{
+  position: relative;
+  width:120px; height:49.28px;
+  -webkit-mask: url("./assets/logo.svg") center / contain no-repeat;
+          mask: url("./assets/logo.svg") center / contain no-repeat;
+  background: #FAFAFB; /* bianco di default */
+  transition: background .22s ease, transform .18s ease, filter .22s ease;
+  will-change: background, transform, filter;
+}
+
+/* rende il logo cliccabile e con focus visibile */
+.pp-logo{
+  display:block;                 /* allarga area cliccabile */
+  cursor:pointer;
+  outline:none;
+}
+.pp-logo:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:4px;
+}
+
+/* hover/focus: riempi con il gradiente rosa della palette */
+.pp-nav-left:hover .pp-logo,
+.pp-logo:hover,
+a.pp-logo:focus-visible{
+  background: linear-gradient(90deg, var(--axl-pink-300), var(--axl-pink-600));
+  filter: drop-shadow(0 0 10px rgba(238,35,123,.35));
+}
+
+/* accessibilità per <a class="pp-logo"> */
+a.pp-logo:focus-visible{
+  outline: 2px solid var(--axl-pink-500);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
 
 .pp-nav{
   display:flex; align-items:center; gap:clamp(10px,1.6vw,24px);
@@ -630,7 +666,7 @@ body::before{
 }
 
 .pp-toolkit-block-title{
-  margin:0 0 18px;
+  margin:0 0 9px;
   font-family:"Urbanist";
   font-weight:700;
   font-size: clamp(24px, 3vw, 42px);
@@ -647,43 +683,62 @@ body::before{
 }
 
 /* Icone */
-.pp-toolkit-icons{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap: clamp(20px, 2vw, 36px);
-  justify-content:flex-start;
+.pp-toolkit-icons {
+  /* tokens */
+  --pp-icon-size: 80px;               /* dimensione icone */
+  --pp-icon-gap-x: clamp(28px, 3vw, 80px);  /* più distanziamento orizzontale */
+  --pp-icon-gap-y: clamp(22px, 2.4vw, 36px);/* più distanziamento verticale */
+
+  display: grid;
+  grid-template-columns: repeat(8, minmax(var(--pp-icon-size), 1fr));
+  gap: var(--pp-icon-gap-y) var(--pp-icon-gap-x);
+  align-items: center;
+  justify-items: start;
 }
-.pp-toolkit-icons img{
-  width: clamp(42px, 4vw, 72px);
-  height:auto;
-  filter: brightness(0) invert(1);
-  opacity:0.92;
-  transition: opacity .2s ease, transform .2s ease;
+
+
+
+.pp-toolkit-icons img {
+  width: var(--pp-icon-size);
+  height: var(--pp-icon-size);
+  object-fit: contain;
+  display: block;
+  filter: brightness(1) contrast(1);
+  opacity: 0.92;
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
-.pp-toolkit-icons img:hover{
-  opacity:1;
-  transform: translateY(-4px);
+.pp-toolkit-icons img:hover {
+  transform: translateY(-4px) scale(1.04);
+  opacity: 1;
 }
 
 /* Responsive */
-@media (max-width: 960px){
-  .pp-toolkit-head{ grid-template-columns:1fr; text-align:left; }
-  .pp-toolkit-title{ font-size: clamp(96px, 24vw, 200px); }
-  .pp-toolkit-block{ grid-template-columns:1fr; }
+@media (max-width: 1200px) {
+  .pp-toolkit-icons { grid-template-columns: repeat(6, 1fr); }
+  .pp-toolkit-icons--wide { grid-template-columns: repeat(6, 1fr); }
 }
-
-.pp-toolkit-block--social{
-  align-items:flex-start;
+@media (max-width: 900px) {
+  .pp-toolkit-icons {
+    --pp-icon-size: 48px;
+    --pp-icon-gap-x: 28px;
+    --pp-icon-gap-y: 24px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .pp-toolkit-icons--wide { grid-template-columns: repeat(5, 1fr); }
 }
-
-/* icone più “ariosamente” distanziate su desktop */
-.pp-toolkit-icons--wide{
-  gap: clamp(28px, 3vw, 56px);
-  justify-content: space-between;
+@media (max-width: 680px) {
+  .pp-toolkit-icons {
+    --pp-icon-size: 42px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pp-toolkit-icons--wide { grid-template-columns: repeat(4, 1fr); }
 }
-@media (max-width: 1200px){
-  .pp-toolkit-icons--wide{ justify-content:flex-start; }
+@media (max-width: 480px) {
+  .pp-toolkit-icons {
+    --pp-icon-size: 36px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pp-toolkit-icons--wide { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ===== CTA centrale sotto le icone ===== */
@@ -1031,10 +1086,12 @@ body::before{
 
 /* risposta (quando aperta) */
 .pp-faq-a{
-  padding: 0 0 clamp(18px,2vw,22px);
+  padding: 0 0 clamp(28px,3vw,36px); /* ↑ più spazio sotto la frase */
   color: rgba(255,255,255,.90);
-  font-family:"Inter"; font-weight:400;
-  font-size: clamp(14px,1.4vw,18px); line-height:1.6;
+  font-family:"Inter";
+  font-weight:400;
+  font-size: clamp(14px,1.4vw,18px);
+  line-height:1.6;
 }
 
 /* responsive header a colonna su tablet */
@@ -1490,116 +1547,1084 @@ body::before{
   }
 }
 
-/* ============================
-   FOOTER — AXL (grid + type)
-============================ */
-.pp-footer{
-  width:100%;
-  max-width:1920px;
-  margin:0 auto;
-  padding: clamp(48px,6vw,96px) 0 clamp(24px,4vw,40px);
-  background: transparent;
+/* ===== CONTACT — Select con freccia minimal + colori leggibili ===== */
+.pp-contact-section .pp-selectwrap{
   position: relative;
 }
-.pp-footer::before{
-  /* divider superiore, come nello shot */
-  content:"";
-  position:absolute; left:0; right:0; top:0; height:1px;
-  background: linear-gradient(90deg,
-    rgba(250,250,251,.22) 0%,
-    rgba(250,250,251,.08) 20%,
-    rgba(250,250,251,.08) 80%,
-    rgba(250,250,251,.22) 100%);
-  opacity:.9;
+
+.pp-contact-section .pp-select{
+  appearance: none;           /* nasconde la freccia di default */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  color: #FAFAFB;             /* testo bianco */
+  background: #1B171C;        /* sfondo scuro */
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+
+  padding: 12px 44px 12px 14px; /* spazio a destra per la freccia */
+  line-height: 1.4;
 }
 
-.pp-foot-inner{
-  padding: 0 var(--container-pad);
+/* Colori anche nella lista opzioni (supporto dipende dal browser) */
+.pp-contact-section .pp-select option{
+  color: #FAFAFB;
+  background: #1B171C;
+}
+
+/* Placeholder/voce vuota un po' più chiara (se usi value="") */
+.pp-contact-section .pp-select option[value=""]{
+  color: rgba(250,250,251,.65);
+}
+
+/* Freccia minimal (chevron) */
+.pp-contact-section .pp-selectwrap::after{
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #FAFAFB;
+  border-bottom: 2px solid #FAFAFB;
+  opacity: .9;
+  pointer-events: none;        /* non blocca i click sulla select */
+}
+
+/* Stati focus coerenti */
+.pp-contact-section .pp-select:focus{
+  border-color: #F288B7;
+  box-shadow: 0 0 0 4px rgba(242,136,183,.18);
+  outline: none;
+}
+
+
+/* === CONTACT — restringi SOLO il form === */
+:root{
+  --axl-form-max: 1750px;           /* cambialo: 880 / 820 / 760 / 700 */
+}
+
+#axlContactForm.pp-form{
+  width: min(100%, var(--axl-form-max));
+  margin-inline: auto;             /* centra il form */
+  gap: 16px;                        /* mantieni respiro */
+}
+
+/* assicura gli elementi full-width sulla griglia */
+#axlContactForm .pp-field--full,
+#axlContactForm .pp-form-foot,
+#axlContactForm .pp-form-msg{
+  grid-column: 1 / -1;
+}
+
+/* mobile: sfrutta tutta la larghezza */
+@media (max-width: 680px){
+  #axlContactForm.pp-form{ width: 100%; }
+}
+
+/* === CONTACT — Hover rosa sulle opzioni della select === */
+.pp-contact-section .pp-select option:hover {
+  background-color: #EE237B !important;  /* rosa brand */
+  color: #FAFAFB !important;             /* testo bianco */
+}
+
+/* Per Firefox (che usa :checked come highlight mentre scorri) */
+.pp-contact-section .pp-select option:checked {
+  background-color: #EE237B !important;
+  color: #FAFAFB !important;
+}
+
+/* === Custom Select AXL (hover pieno controllo) === */
+/* container generato via JS */
+.pp-sel{ position:relative; width:100%; font: 700 15px/1.4 "Urbanist"; color:#FAFAFB; }
+
+/* trigger */
+.pp-sel__btn{
+  width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; padding:10px 40px 10px 12px;
+  border-radius:10px; border:1px solid rgba(255,255,255,.18);
+  background:#1B171C; color:#FAFAFB; cursor:pointer;
+}
+.pp-sel__btn:focus-visible{ outline:2px solid #EE237B; outline-offset:2px; }
+
+/* caret */
+.pp-sel__btn::after{
+  content:""; width:8px; height:8px; transform:rotate(45deg);
+  border-right:2px solid #FAFAFB; border-bottom:2px solid #FAFAFB;
+  margin-left:auto; opacity:.9; flex:0 0 auto;
+}
+
+/* lista */
+.pp-sel__list{
+  position:absolute; left:0; right:0; margin-top:6px;
+  max-height:240px; overflow:auto; z-index:40;
+  background:#1B171C; border:1px solid rgba(255,255,255,.18); border-radius:10px;
+  box-shadow:0 12px 32px rgba(0,0,0,.36);
+  display:none; /* toggled via [data-open] */
+}
+.pp-sel[data-open="true"] .pp-sel__list{ display:block; }
+
+/* option */
+.pp-sel__opt{
+  padding:10px 12px; cursor:pointer; user-select:none; white-space:nowrap;
+}
+.pp-sel__opt:hover{ background:#EE237B; color:#FAFAFB; }      /* <-- hover rosa */
+
+/* nascondi la select ma lasciala attiva per il submit */
+select.pp-select--enhance{
+  position:absolute !important; inset:auto auto auto 0;
+  width:1px !important; height:1px !important; padding:0 !important; border:0 !important;
+  clip:rect(0 0 0 0); clip-path:inset(50%); overflow:hidden !important; white-space:nowrap !important;
+}
+
+.pp-selectwrap:has(.pp-sel)::after { display:none; }
+
+#axlContactForm.pp-form{
+  margin-top: clamp(-32px, -32px, -32px);  /* uguale al gap delle card */
+}
+
+:root {
+  --axl-text: #FAFAFB;
+  --axl-accent: #F288B7;
+  --axl-outline: #F287B7;
+  --axl-divider: rgba(255,255,255,.18);
+  --axl-maxw: 1280px;
+}
+
+.axl-footer {
+  position: relative;
+  color: var(--axl-text);
+  font-family: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: url("assets/bgfooter.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* 1) Logo esteso */
+.axl-footer__hero {
+  max-width: var(--axl-maxw);
+  margin: 0 auto;
+  padding: 56px 24px 24px;
+}
+.axl-footer__logo-extended {
+  width: 100%;
+  max-width: 1800px;       /* prima era meno, ora occupa quasi tutto */
+  height: auto;
+  display: block;
+  opacity: .95;
+  margin-inline: auto;
+  transform: scale(1.1);   /* leggero ingrandimento visivo */
+}
+
+
+/* 2) Divisore */
+.axl-footer__divider {
+  border: 0;
+  border-top: 1px solid var(--axl-divider);
+  margin: 12px 0 0;
+}
+
+/* 3) Griglia principale */
+.axl-footer__grid {
+  max-width: var(--axl-maxw);
+  margin: 0 auto;
+  padding: 28px 24px 88px;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr 1.2fr; /* proporzioni coerenti col mock */
-  gap: clamp(24px,4vw,64px);
+  grid-template-columns: 320px 220px 1fr;
+  gap: 48px 56px;
   align-items: start;
 }
 
-/* Brand (solo word-mark) */
-.pp-foot-brand{ display:block; align-self:start; }
-.pp-foot-brand img{
-  display:block;
-  width: min(420px, 100%);   /* grande ma contenuto */
-  height:auto;
-  filter: brightness(0) invert(1);
+/* 3a) Brand + Social */
+.axl-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.axl-footer__brandmark {
+  width: 240px;            /* prima 156px → ora +50% */
+  height: auto;
+  display: block;
 }
 
-/* Colonne */
-.pp-foot-col{ display:flex; flex-direction:column; gap:14px; }
-
-.pp-foot-title{
-  margin:0 0 8px;
-  font-family:"Urbanist";
-  font-weight:800;                 /* forte come in Figma */
-  text-transform:uppercase;
-  letter-spacing:1px;
-  font-size: clamp(14px,1vw,16px);
-  line-height:1.2;
-  color:#FAFAFB;
-  opacity:.92;
+.axl-footer__social {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.sbtn {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: .95;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.sbtn:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.sbtn__icon {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.pp-foot-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
-.pp-foot-list a{
-  text-decoration:none;
-  font-family:"Urbanist";
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  font-size:18px;
-  line-height:21.6px;
-  color:#FAFAFB;
-  opacity:.96;
-  transition: opacity .18s ease, transform .18s ease, color .18s ease;
+/* 3b) Menu */
+.axl-footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 6px;
 }
-.pp-foot-list a:hover{
-  opacity:1;
+.navlink {
+  color: var(--axl-text);
+  font-size: 18px;
+  line-height: 21.6px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  opacity: .95;
+}
+.navlink:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.navlink--out {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.navlink__chev {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--axl-text);
+  border-radius: 999px;
+  position: relative;
+}
+.navlink__chev::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--axl-text);
+  border-right: 2px solid var(--axl-text);
+  transform: rotate(45deg);
+}
+
+/* 3c) Claim + CTA */
+.axl-footer__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.axl-footer__claim {
+  margin: 0;
+  font-size: clamp(34px, 4.7vw, 48px);
+  line-height: 1.1;
+  font-weight: 800;
+}
+.axl-footer__claim em {
+  font-style: italic;
+  font-weight: 800;
+}
+.axl-footer__claim .accent {
+  color: var(--axl-accent);
+}
+
+.axl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 20px;
+  border-radius: 999px;
+  outline: 1px solid var(--axl-outline);
+  outline-offset: -1px;
+  text-decoration: none;
+  color: var(--axl-text);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  background: rgba(242,136,183,.07);
+  transition: transform .15s ease, background .15s ease;
+}
+.axl-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(242,136,183,.12);
+}
+.axl-btn__chev {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--axl-text);
+  border-radius: 999px;
+  position: relative;
+}
+.axl-btn__chev::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid var(--axl-text);
+  border-right: 2px solid var(--axl-text);
+  transform: rotate(45deg);
+}
+
+/* Responsività */
+@media (max-width: 1024px) {
+  .axl-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .axl-footer__cta {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 640px) {
+  .axl-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 64px;
+  }
+}
+
+/* === Glass badge per freccia/chevron === */
+.pp-btn__badge,
+.btn-primary .icon{
+  width:36px; height:36px; border-radius:999px;
+  display:inline-flex; align-items:center; justify-content:center;
+
+  /* glass */
+  background: rgba(255,255,255,0.10);
+  border: 2px solid rgba(250,250,251,0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+
+  /* riflesso + profondità */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 6px 14px rgba(0,0,0,0.24);
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+/* hover/active: un filo più “bagnato” */
+.pp-btn:hover .pp-btn__badge,
+.btn-primary:hover .icon{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(250,250,251,0.70);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 10px 22px rgba(0,0,0,0.28);
+  transform: translateY(-1px);
+}
+.pp-btn:active .pp-btn__badge,
+.btn-primary:active .icon{
+  transform: translateY(0) scale(.98);
+}
+
+/* icona coerente col testo del bottone */
+.pp-btn__icon,
+.btn-primary .icon svg{
+  width:18px; height:18px; display:block;
+  fill: currentColor;
+  opacity:.95;
+}
+
+/* fallback se il blur non è supportato */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+  .pp-btn__badge,
+  .btn-primary .icon{
+    background: rgba(255,255,255,0.16);
+  }
+}
+
+/* =============================================
+   AXL Studios — vNext patch (glass + responsive)
+   Incolla TUTTO questo blocco in fondo al tuo CSS esistente.
+   Sovrascrive solo ciò che serve e aggiunge miglioramenti.
+============================================= */
+
+/* === 0) Tokens aggiuntivi === */
+:root{
+  /* altezza navbar per allineare pannelli mobile */
+  --nav-h: clamp(56px, 8vw, 96px);
+
+  /* glass multi‑layer per badge/icona */
+  --glass-grad-top: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+  --glass-grad-spec-1: radial-gradient(90% 120% at 28% 8%, rgba(255,255,255,.38) 0%, rgba(255,255,255,0) 60%);
+  --glass-grad-spec-2: radial-gradient(120% 90% at 72% 120%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 55%);
+}
+
+/* === 1) NAV responsivo più solido === */
+.pp-navbar{ min-height: var(--nav-h); padding-block: clamp(10px,2.2vw,32px); }
+@media (max-width: 1024px){
+  .pp-nav{ top: var(--nav-h); }
+}
+
+/* === 2) HERO: padding e blur più equilibrati su mobile === */
+.pp-hero-inner{ padding: clamp(32px,6vw,96px) clamp(20px,7vw,280px); }
+.pp-hero-overlay{ -webkit-backdrop-filter: blur(10px) saturate(105%); backdrop-filter: blur(10px) saturate(105%); }
+@media (max-width: 560px){
+  .pp-hero{ min-height: 480px; }
+  .pp-hero-overlay{ -webkit-backdrop-filter: blur(8px) saturate(100%); backdrop-filter: blur(8px) saturate(100%); }
+}
+
+/* === 3) SERVICES: card width fluida + inerzia touch migliore === */
+.pp-services-viewport{ scroll-behavior: smooth; }
+.pp-service{ --card-w: clamp(280px, 60vw, 600px); }
+
+/* === 4) TEAM: rimuovi height fissa, usa min-height fluida === */
+.pp-team-col{ height: auto; min-height: clamp(420px, 60dvh, 780px); padding: clamp(32px,6vw,80px); }
+.pp-team-photo{ height: clamp(220px, 32dvh, 340px); }
+
+/* === 5) PROJECTS: split che non “spacca” su laptop === */
+.pp-projects-split{ height: auto; }
+.pp-projects-panel{ padding: clamp(24px,4vw,80px) clamp(24px,5vw,80px); }
+
+/* === 6) TOOLKIT icons: griglia auto‑fit (niente media query a cascata) === */
+.pp-toolkit-icons{
+  --pp-icon-size: clamp(36px, 7vw, 80px);
+  --pp-icon-gap-x: clamp(20px, 3.5vw, 60px);
+  --pp-icon-gap-y: clamp(18px, 2.5vw, 32px);
+  grid-template-columns: repeat(auto-fit, minmax(var(--pp-icon-size), 1fr));
+}
+.pp-toolkit-cta{ margin-top: clamp(18px, 3.5vw, 40px); }
+
+/* === 7) FAQ: titoli enormi ma contenuti gestibili === */
+.pp-faq-title{ font-size: clamp(72px, 11vw, 208px); }
+.pp-faq-q{ font-size: clamp(18px, 1.6vw, 26px); }
+
+/* === 8) CONTACT: form più stretto su desktop, pieno su mobile === */
+#axlContactForm.pp-form{ width: min(100%, var(--axl-form-max, 1200px)); }
+@media (max-width: 1280px){
+  #axlContactForm.pp-form{ width: min(100%, 980px); }
+}
+@media (max-width: 900px){
+  #axlContactForm.pp-form{ width: 100%; }
+}
+
+/* === 9) Footer: claim che non va a capo male === */
+.axl-footer__claim{ font-size: clamp(28px, 4.4vw, 48px); }
+
+/* === 10) Preferenze utente: riduci animazioni === */
+@media (prefers-reduced-motion: reduce){
+  *{ transition-duration: .001ms !important; animation-duration: .001ms !important; }
+  .pp-btn, .pp-service-cta, .pp-project-cta, .pp-toolkit-cta-btn{ transform: none !important; }
+}
+
+/* === 11) FALLBACK no‑blur: colori un filo più pieni per mantenere contrasto === */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+  .pp-service-inner,
+  .pp-contact-section .pp-form,
+  .pp-faq-item,
+  .pp-contact-section .pp-contact-card,
+  .pp-cta,
+  .pp-btn{
+    background: rgba(255,255,255,0.10);
+  }
+}
+
+/* =====================================================
+   GLASS BADGE — sostituisce il semplice linear‑gradient
+   con multi‑layer + riflesso.
+   Applica sia a .pp-btn__badge sia a .btn-primary .icon
+===================================================== */
+.pp-btn__badge,
+.btn-primary .icon{
+  position: relative; /* per il riflesso ::after */
+  background: var(--glass-grad-spec-1), var(--glass-grad-spec-2), var(--glass-grad-top), rgba(255,255,255,0.10);
+  border: 2px solid rgba(250,250,251,0.60);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 6px 14px rgba(0,0,0,0.24);
+}
+/* riflesso alto tipo "sheen" */
+.pp-btn__badge::after,
+.btn-primary .icon::after{
+  content:""; position:absolute; left:2px; right:2px; top:2px; height:42%;
+  border-radius:inherit; pointer-events:none;
+  background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
+  opacity:.65; filter: blur(.4px);
+}
+/* hover/active “bagnato” + focus ring accessibile */
+.pp-btn:hover .pp-btn__badge,
+.btn-primary:hover .icon{
+  background: var(--glass-grad-spec-1), var(--glass-grad-spec-2), linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,.10)), rgba(255,255,255,0.12);
+  border-color: rgba(250,250,251,0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 10px 22px rgba(0,0,0,0.28);
+}
+.pp-btn:focus-visible .pp-btn__badge,
+.btn-primary:focus-visible .icon{
+  box-shadow:
+    0 0 0 3px rgba(238,35,123,.24),
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 8px 22px rgba(0,0,0,.24);
+}
+
+/* icona interna sempre leggibile */
+.pp-btn__icon,
+.btn-primary .icon svg{ opacity:.98; }
+
+/* === 12) Mobile micro‑tuning generale === */
+@media (max-width: 560px){
+  .pp-services-desc,
+  .pp-projects-desc,
+  .pp-team-desc,
+  .pp-faq-desc,
+  .pp-contact-section .pp-contact-desc{ font-size: clamp(14px, 4.2vw, 18px); }
+  .pp-service-text,
+  .pp-project-text,
+  .pp-team-bio{ font-size: clamp(13px, 3.8vw, 16px); }
+}
+
+/* === 13) Safe‑area padding per notch iOS === */
+body{ padding-left: max(0px, env(safe-area-inset-left)); padding-right: max(0px, env(safe-area-inset-right)); }
+.pp-navbar{ padding-left: calc(var(--container-pad) + env(safe-area-inset-left)); padding-right: calc(var(--container-pad) + env(safe-area-inset-right)); }
+
+
+/* =============================================
+   AXL Studios — vNext tail patch (append this)
+   Lighter overrides + better glass + responsive
+============================================= */
+
+/* 0) Extra tokens (no HTML changes needed) */
+:root{
+  --nav-h: clamp(56px, 8vw, 96px);
+  --glass-grad-top: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+  --glass-grad-spec-1: radial-gradient(90% 120% at 28% 8%, rgba(255,255,255,.38) 0%, rgba(255,255,255,0) 60%);
+  --glass-grad-spec-2: radial-gradient(120% 90% at 72% 120%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 55%);
+}
+
+/* 1) NAV: robust on mobile */
+.pp-navbar{ min-height: var(--nav-h); padding-block: clamp(10px,2.2vw,32px); }
+@media (max-width: 1024px){ .pp-nav{ top: var(--nav-h); }}
+
+/* 2) HERO: tighter padding + softer blur on small */
+.pp-hero-inner{ padding: clamp(32px,6vw,96px) clamp(20px,7vw,280px); }
+.pp-hero-overlay{ -webkit-backdrop-filter: blur(10px) saturate(105%); backdrop-filter: blur(10px) saturate(105%); }
+@media (max-width:560px){
+  .pp-hero{ min-height:480px; }
+  .pp-hero-overlay{ -webkit-backdrop-filter: blur(8px) saturate(100%); backdrop-filter: blur(8px) saturate(100%); }
+}
+
+/* 3) SERVICES: fluid card width + smooth drag */
+.pp-services-viewport{ scroll-behavior: smooth; }
+.pp-service{ --card-w: clamp(280px, 60vw, 600px); }
+
+/* 4) TEAM: remove fixed heights */
+.pp-team-col{ height:auto; min-height: clamp(420px, 60dvh, 780px); padding: clamp(32px,6vw,80px); }
+.pp-team-photo{ height: clamp(220px, 32dvh, 340px); }
+
+/* 5) PROJECTS: friendlier on laptop widths */
+.pp-projects-split{ height:auto; }
+.pp-projects-panel{ padding: clamp(24px,4vw,80px) clamp(24px,5vw,80px); }
+
+/* 6) TOOLKIT icons: auto-fit grid (fewer media queries) */
+.pp-toolkit-icons{
+  --pp-icon-size: clamp(36px, 7vw, 80px);
+  --pp-icon-gap-x: clamp(20px, 3.5vw, 25px);
+  --pp-icon-gap-y: clamp(18px, 2.5vw, 64px);
+  grid-template-columns: repeat(auto-fit, minmax(var(--pp-icon-size), 1fr));
+}
+.pp-toolkit-cta{ margin-top: clamp(18px, 3.5vw, 40px); }
+
+/* 7) FAQ: scale headlines but keep questions readable */
+.pp-faq-title{ font-size: clamp(72px, 11vw, 208px); }
+.pp-faq-q{ font-size: clamp(18px, 1.6vw, 26px); }
+
+/* 8) CONTACT: narrower on desktop, full on mobile */
+#axlContactForm.pp-form{ width: min(100%, var(--axl-form-max, 1200px)); }
+@media (max-width:1280px){ #axlContactForm.pp-form{ width: min(100%, 980px); } }
+@media (max-width:900px){  #axlContactForm.pp-form{ width: 100%; } }
+
+/* 9) Footer claim: avoid ugly wraps */
+.axl-footer__claim{ font-size: clamp(28px, 4.4vw, 48px); }
+
+/* 10) Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  *{ transition-duration:.001ms !important; animation-duration:.001ms !important; }
+  .pp-btn, .pp-service-cta, .pp-project-cta, .pp-toolkit-cta-btn{ transform:none !important; }
+}
+
+/* 11) No-blur fallback: keep contrast */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+  .pp-service-inner,
+  .pp-contact-section .pp-form,
+  .pp-faq-item,
+  .pp-contact-section .pp-contact-card,
+  .pp-cta,
+  .pp-btn{
+    background: rgba(255,255,255,0.10);
+  }
+}
+
+/* 12) GLASS BADGE — real glass ring around arrows/icons */
+.pp-btn__badge,
+.btn-primary .icon{
+  position: relative;
+  background: var(--glass-grad-spec-1), var(--glass-grad-spec-2), var(--glass-grad-top), rgba(255,255,255,0.10);
+  border: 2px solid rgba(250,250,251,0.60);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 6px 14px rgba(0,0,0,0.24);
+}
+.pp-btn__badge::after,
+.btn-primary .icon::after{
+  content:""; position:absolute; left:2px; right:2px; top:2px; height:42%;
+  border-radius:inherit; pointer-events:none;
+  background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
+  opacity:.65; filter: blur(.4px);
+}
+.pp-btn:hover .pp-btn__badge,
+.btn-primary:hover .icon{
+  background: var(--glass-grad-spec-1), var(--glass-grad-spec-2),
+              linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,.10)),
+              rgba(255,255,255,0.12);
+  border-color: rgba(250,250,251,0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 10px 22px rgba(0,0,0,0.28);
+}
+.pp-btn:focus-visible .pp-btn__badge,
+.btn-primary:focus-visible .icon{
+  box-shadow:
+    0 0 0 3px rgba(238,35,123,.24),
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 8px 22px rgba(0,0,0,.24);
+}
+
+
+/* 13) Mobile micro-typography */
+@media (max-width:560px){
+  .pp-services-desc,
+  .pp-projects-desc,
+  .pp-team-desc,
+  .pp-faq-desc,
+  .pp-contact-section .pp-contact-desc{ font-size: clamp(14px, 4.2vw, 18px); }
+  .pp-service-text,
+  .pp-project-text,
+  .pp-team-bio{ font-size: clamp(13px, 3.8vw, 16px); }
+}
+
+/* 14) Safe-area guards (iOS notch, etc.) */
+body{
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+.pp-navbar{
+  padding-left: calc(var(--container-pad) + env(safe-area-inset-left));
+  padding-right: calc(var(--container-pad) + env(safe-area-inset-right));
+}
+
+/* === NAV — hover/active rosa (usa la palette) === */
+.pp-nav-item{
+  position: relative;
+  transition: color .18s ease, text-shadow .18s ease;
+}
+.pp-nav-item::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:-6px; height:2px;
+  background: linear-gradient(90deg, var(--axl-pink-300), var(--axl-pink-600));
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform .22s ease;
+  opacity:.9;
+}
+
+/* Hover: testo rosa + underline gradiente */
+.pp-nav-item:hover{
   color: var(--axl-pink-300);
+  text-shadow: 0 0 12px rgba(238,35,123,.35);
+}
+.pp-nav-item:hover::after{ transform: scaleX(1); }
+
+/* Focus tastiera accessibile */
+.pp-nav-item:focus-visible{
+  outline: 2px solid var(--axl-pink-500);
+  outline-offset: 4px;
+  border-radius: 6px;
+  color: var(--axl-pink-500);
+}
+
+/* Stato attivo (facoltativo: .is-active o aria-current) */
+.pp-nav-item.is-active,
+.pp-nav-item[aria-current="page"]{
+  color: var(--axl-pink-500);
+}
+.pp-nav-item.is-active::after,
+.pp-nav-item[aria-current="page"]::after{
+  transform: scaleX(1);
+}
+
+/* Icona di "Contattaci" sincronizzata col colore del link */
+.pp-contact svg path{ fill: currentColor !important; }
+.pp-contact:hover{ color: var(--axl-pink-300); }
+
+/* ===== pp-service-cta — badge più grande e più trasparente ===== */
+.pp-service-cta-badge{
+  width: 36px;                 /* + grande (prima 24px) */
+  height: 36px;
+  background: rgba(255,255,255,.08);          /* meno bianco */
+  border: 2px solid rgba(250,250,251,.40);    /* più trasparente */
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 8px 16px rgba(0,0,0,.22);
+}
+
+/* scala l’icona dentro al nuovo cerchio */
+.pp-service-cta-badge svg{
+  width: 17px;
+  height: 19px;
+}
+
+/* stati */
+.pp-service-cta:hover .pp-service-cta-badge{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(250,250,251,.50);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 10px 20px rgba(0,0,0,.24);
+}
+
+.pp-service-cta:active .pp-service-cta-badge{
+  background: rgba(255,255,255,.12);
+  border-color: rgba(250,250,251,.60);
+  transform: translateY(0) scale(.98);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 6px 14px rgba(0,0,0,.22);
+}
+
+/* ===== pp-service-cta — badge centrato, più grande e più trasparente ===== */
+.pp-service-cta-badge{
+  /* sizing */
+  width: 40px;                 /* un po' più grande per dare respiro all'icona */
+  height: 40px;
+  border-radius: 50%;
+  flex: 0 0 40px;              /* evita schiacciamenti */
+
+  /* centering */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;              /* elimina la linea di base che sposta l'SVG */
+  overflow: hidden;
+
+  /* glass */
+  background: rgba(255,255,255,.08);
+  border: 2px solid rgba(250,250,251,.40);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 8px 16px rgba(0,0,0,.22);
+}
+
+/* l’SVG usa le dimensioni del badge e non “sborda” */
+.pp-service-cta-badge svg{
+  width: 18px;                 /* forza dimensione interna */
+  height: 18px;
+  display: block;              /* niente spazio extra sotto l’SVG */
+  pointer-events: none;
+  transform: translateY(0);    /* neutralizza eventuali eredità */
+}
+
+/* hover/pressed del badge */
+.pp-service-cta:hover .pp-service-cta-badge{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(250,250,251,.50);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 10px 20px rgba(0,0,0,.24);
+}
+
+.pp-service-cta:active .pp-service-cta-badge{
+  background: rgba(255,255,255,.12);
+  border-color: rgba(250,250,251,.60);
+  transform: translateY(0) scale(.98);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 6px 14px rgba(0,0,0,.22);
+}
+
+/* (opzionale) su schermi molto piccoli riduciamo leggermente */
+@media (max-width: 420px){
+  .pp-service-cta-badge{ width: 36px; height: 36px; flex-basis: 36px; }
+}
+
+/* ===== pp-service-cta — effetto PRESSED (mouse/touch + stato persistente .is-pressed) ===== */
+.pp-service-cta{
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .12s ease, color .12s ease, outline-color .12s ease;
+  will-change: transform;
+}
+
+/* Stato pressed (mentre tieni premuto) e persistente (aggiungi .is-pressed via JS se vuoi mantenerlo) */
+.pp-service-cta:active,
+.pp-service-cta.is-pressed{
+  color: var(--axl-pink-600);              /* la freccia (currentColor) diventa rosa brand */
+  outline-color: var(--axl-pink-600);
+  transform: translateY(0) scale(.98);     /* bottone leggermente “schiacciato” */
+}
+
+/* Badge: aspetto “affondato” + inner shadow */
+.pp-service-cta .pp-service-cta-badge{
+  transition: transform .1s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+.pp-service-cta:active .pp-service-cta-badge,
+.pp-service-cta.is-pressed .pp-service-cta-badge{
+  background: rgba(255,255,255,.14);
+  border-color: rgba(250,250,251,.65);
+  transform: translateY(0) scale(.94);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,.18),
+    inset 0 -2px 6px rgba(255,255,255,.08),
+    0 4px 10px rgba(0,0,0,.20);
+}
+
+/* Freccia: leggero “nudge” verso il basso per il feedback */
+.pp-service-cta .pp-service-cta-badge svg{
+  transition: transform .1s ease;
+}
+.pp-service-cta:active .pp-service-cta-badge svg,
+.pp-service-cta.is-pressed .pp-service-cta-badge svg{
+  transform: translateY(1px);
+}
+
+
+
+.pp-btn.pp-btn--sm.pp-keep:hover{
+  color: var(--axl-pink-300);
+  outline-color: var(--axl-pink-500);
+  background: rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 10px 26px rgba(238,35,123,.16);
   transform: translateY(-1px);
 }
 
-/* Bottom bar */
-.pp-foot-bottom{
-  margin-top: clamp(28px,4vw,48px);
-  padding: 0 var(--container-pad);
-  display:flex; gap:24px;
-  align-items:center; justify-content:space-between;
-  flex-wrap:wrap;
+.pp-btn.pp-btn--sm.pp-keep:active,
+.pp-btn.pp-btn--sm.pp-keep.is-pressed{
+  color: var(--axl-pink-600);
+  outline-color: var(--axl-pink-600);
+  transform: translateY(0) scale(.98);
 }
-.pp-foot-tag{
-  margin:0;
-  font-family:"Urbanist";
-  font-weight:600;
-  font-size: clamp(16px,2vw,28px);
-  line-height:1.2;
-  color:#FAFAFB;
-}
-.pp-foot-tag em{ font-style:italic; font-weight:700; color:#FAFAFB; }
 
-.pp-foot-meta{
-  display:flex; gap:18px; align-items:center; color:rgba(250,250,251,.75);
-  font: 500 14px/1.2 "Inter";
+.pp-btn.pp-btn--sm.pp-keep:focus-visible{
+  box-shadow:
+    0 0 0 3px rgba(238,35,123,.24),
+    inset 0 1px 0 rgba(255,255,255,.14);
 }
-.pp-foot-meta a{
-  color:rgba(250,250,251,.85);
-  text-decoration:none;
-}
-.pp-foot-meta a:hover{ color:#FAFAFB; }
 
-/* Responsive */
-@media (max-width: 1080px){
-  .pp-foot-inner{
-    grid-template-columns: 1fr 1fr;
+
+
+.pp-btn.pp-btn--sm.pp-keep .pp-btn__badge svg{
+  display: block;
+  width: 17px; height: 19px;
+  fill: currentColor;             /* segue il colore del testo/stato */
+}
+
+.pp-btn.pp-btn--sm.pp-keep:hover .pp-btn__badge{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10)),
+    rgba(255,255,255,.10);
+  border-color: rgba(250,250,251,.65);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 10px 20px rgba(0,0,0,.24);
+}
+
+
+
+.pp-btn.pp-btn--sm.pp-keep:active .pp-btn__badge svg,
+.pp-btn.pp-btn--sm.pp-keep.is-pressed .pp-btn__badge svg{
+  transform: translateY(1px);
+}
+
+/* Fallback se il blur non è supportato */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+  .pp-btn.pp-btn--sm.pp-keep .pp-btn__badge{
+    background: rgba(255,255,255,.12);
   }
-  .pp-foot-brand{ grid-column: 1 / -1; }
 }
-@media (max-width: 560px){
-  .pp-foot-inner{ grid-template-columns: 1fr; }
-  .pp-foot-bottom{ flex-direction:column; align-items:flex-start; gap:12px; }
+
+/* ===== TEAM CTA — glass, hover & pressed (override) ===== */
+.pp-team-cta{
+  display:inline-flex; align-items:center; gap:16px;
+  padding:10px 16px 10px 28px;
+  border-radius:32px; text-decoration:none;
+  font-family:"Urbanist"; font-weight:800; text-transform:uppercase; letter-spacing:.5px;
+  color:#FAFAFB;
+
+  background: rgba(255,255,255,0.06);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  outline:1px solid var(--axl-pink-300); outline-offset:-1px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 10px 26px rgba(238,35,123,.16);
+
+  transition:
+    transform .18s ease,
+    outline-color .18s ease,
+    box-shadow .18s ease,
+    background-color .18s ease,
+    color .18s ease;
+}
+
+/* badge circolare “glass” */
+.pp-team-cta-badge{
+  width:36px; height:36px; flex:0 0 36px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:999px; position:relative;
+
+  background:
+    radial-gradient(90% 120% at 28% 8%, rgba(255,255,255,.38) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(120% 90% at 72% 120%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06)),
+    rgba(255,255,255,0.10);
+  border:2px solid rgba(250,250,251,0.60);
+
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 6px 14px rgba(0,0,0,0.24);
+}
+
+/* riflesso alto */
+.pp-team-cta-badge::after{
+  content:""; position:absolute; left:2px; right:2px; top:2px; height:42%;
+  border-radius:inherit; pointer-events:none;
+  background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
+  opacity:.65; filter: blur(.4px);
+}
+
+/* chevron con i bordi, segue currentColor */
+.pp-cta-chev{
+  width:10px; height:10px; display:block;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform: rotate(-45deg);           /* ► */
+  transition: transform .12s ease, opacity .12s ease;
+  opacity:.98;
+}
+
+/* hover */
+.pp-team-cta:hover{
+  background: rgba(255,255,255,0.10);
+  outline-color: var(--axl-pink-600);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 14px 30px rgba(238,35,123,.22);
+}
+.pp-team-cta:hover .pp-team-cta-badge{
+  background:
+    radial-gradient(90% 120% at 28% 8%, rgba(255,255,255,.40) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(120% 90% at 72% 120%, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,.10)),
+    rgba(255,255,255,0.12);
+  border-color: rgba(250,250,251,.72);
+}
+
+/* pressed (mouse down / touch) */
+.pp-team-cta:active{
+  transform: translateY(0) scale(.98);
+  color: var(--axl-pink-600);
+  outline-color: var(--axl-pink-600);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 8px 22px rgba(238,35,123,.16);
+}
+.pp-team-cta:active .pp-team-cta-badge{
+  transform: scale(.94);
+  background: rgba(255,255,255,.14);
+  border-color: rgba(250,250,251,.65);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,.18),
+    inset 0 -2px 6px rgba(255,255,255,.08),
+    0 4px 10px rgba(0,0,0,.20);
+}
+.pp-team-cta:active .pp-cta-chev{ transform: rotate(-45deg) translateY(1px); }
+
+/* focus accessibile */
+.pp-team-cta:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:4px;
+  box-shadow: 0 0 0 3px rgba(238,35,123,.24), inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+/* fallback no-blur */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+  .pp-team-cta{ background: rgba(255,255,255,0.10); }
+  .pp-team-cta-badge{ background: rgba(255,255,255,0.12); }
+}
+
+.pp-toolkit-cta-btn:active,
+.pp-toolkit-cta-btn.is-pressed{
+  color: var(--axl-pink-600);
+  transform: translateY(0) scale(.98);
+}
+.pp-toolkit-cta-btn:active .pp-toolkit-cta-badge,
+.pp-toolkit-cta-btn.is-pressed .pp-toolkit-cta-badge{
+  background: rgba(255,255,255,.14);
+  border-color: rgba(250,250,251,.65);
+  transform: translateY(0) scale(.94);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,.18),
+    inset 0 -2px 6px rgba(255,255,255,.08),
+    0 4px 10px rgba(0,0,0,.20);
+}
+.pp-toolkit-cta-btn .pp-toolkit-cta-badge svg{
+  transition: transform .1s ease;
+}
+.pp-toolkit-cta-btn:active .pp-toolkit-cta-badge svg,
+.pp-toolkit-cta-btn.is-pressed .pp-toolkit-cta-badge svg{
+  transform: translateY(1px);
+}
+
+/* === Submit "Invia" — stesso stile degli altri bottoni === */
+#c_submit.pp-btn{
+  /* opzionale: ribadisco i token del primario, nel caso fossero stati modificati sopra */
+  --btn-h: 56px;
+  --btn-pad-l: 56px;
+  --btn-pad-r: 16px;
+}
+
+/* badge: usa il glass globale; qui forzo solo il sizing dell’icona */
+#c_submit .pp-btn__badge svg{
+  width: 12px;
+  height: 12px;
+  display: block;
+  fill: currentColor;              /* segue il colore del bottone (hover/pressed) */
+  transition: transform .1s ease;  /* micro nudge in pressed */
+}
+
+/* pressed: leggero affondo dell’icona come sugli altri */
+#c_submit:active .pp-btn__badge svg,
+#c_submit.is-pressed .pp-btn__badge svg{
+  transform: translateY(1px);
+}
+
+/* (facoltativo) se vuoi assicurarti il badge 36x36 come gli altri */
+#c_submit .pp-btn__badge{
+  width: 36px;
+  height: 36px;
 }
