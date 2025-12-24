@@ -328,7 +328,6 @@ a.pp-logo:focus-visible{
     z-index:1000; /* above ::before backdrop */
     color:var(--axl-pink-300);
   }
-  }
   .pp-menu-toggle:checked + label.pp-burger span:nth-child(1){
     transform:translateY(7px) rotate(45deg);
   }
