@@ -33,14 +33,17 @@ export function setupServicesTrack() {
   populateClones();
 
   let startX = 0;
+  let startY = 0;
   let currentX = 0;
   let previousX = 0;
   let isPointerDown = false;
+  let isDraggingHorizontally = false;
   let translate = 0;
   let total = 0;
   let leftLimit = 0;
   let rightLimit = 0;
   let resizeFrame;
+  const dragThreshold = 12;
 
   function recalc() {
     const width = cardWidth();
@@ -63,10 +66,12 @@ export function setupServicesTrack() {
 
   function onPointerDown(event) {
     isPointerDown = true;
-    viewport.classList.add("dragging");
     document.body.style.userSelect = "none";
-    startX = event.touches ? event.touches[0].clientX : event.clientX;
+    const point = event.touches ? event.touches[0] : event;
+    startX = point.clientX;
+    startY = point.clientY;
     previousX = startX;
+    isDraggingHorizontally = false;
   }
 
   function onPointerMove(event) {
@@ -74,16 +79,46 @@ export function setupServicesTrack() {
       return;
     }
 
-    currentX = event.touches ? event.touches[0].clientX : event.clientX;
+    const point = event.touches ? event.touches[0] : event;
+    const deltaX = point.clientX - startX;
+    const deltaY = point.clientY - startY;
+
+    if (event.touches && !isDraggingHorizontally) {
+      const distanceX = Math.abs(deltaX);
+      const distanceY = Math.abs(deltaY);
+
+      if (distanceX < dragThreshold && distanceY < dragThreshold) {
+        return;
+      }
+
+      if (distanceY > distanceX) {
+        onPointerUp();
+        return;
+      }
+
+      isDraggingHorizontally = true;
+      viewport.classList.add("dragging");
+    }
+
+    if (!event.touches && !isDraggingHorizontally) {
+      isDraggingHorizontally = true;
+      viewport.classList.add("dragging");
+    }
+
+    currentX = point.clientX;
     translate += currentX - previousX;
     previousX = currentX;
     wrap();
     track.style.transform = `translateX(${translate}px)`;
-    event.preventDefault();
+
+    if (isDraggingHorizontally) {
+      event.preventDefault();
+    }
   }
 
   function onPointerUp() {
     isPointerDown = false;
+    isDraggingHorizontally = false;
     viewport.classList.remove("dragging");
     document.body.style.userSelect = "";
   }
