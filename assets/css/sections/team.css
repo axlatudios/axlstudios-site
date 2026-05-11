@@ -41,6 +41,27 @@
   font-weight:600;
 }
 
+@media (max-width:1200px){
+  .pp-team-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+  }
+  .pp-team-title{
+    font-size:clamp(64px,14vw,128px);
+    line-height:.92;
+  }
+  .pp-team-desc{
+    width:100%;
+    max-width:42rem;
+    font-size:clamp(16px,2.7vw,22px);
+    line-height:1.4;
+  }
+  .pp-team-desc br{
+    display:none;
+  }
+}
+
 .pp-team-grid{
   width:100%;
   position:relative;
@@ -253,8 +274,24 @@
 }
 
 @media (max-width:560px){
+  .pp-team{
+    padding:64px 0 96px;
+  }
+  .pp-team-head{
+    gap:14px;
+    padding-bottom:28px;
+  }
+  .pp-team-title{
+    font-size:clamp(54px,16vw,88px);
+    max-width:100%;
+  }
   .pp-team-photo{ height:260px; }
-  .pp-team-desc{ font-size:clamp(14px,4.2vw,18px); }
+  .pp-team-desc{
+    max-width:none;
+    font-size:clamp(15px,4.6vw,18px);
+    line-height:1.5;
+    text-wrap:pretty;
+  }
   .pp-team-bio{ font-size:clamp(13px,3.8vw,16px); }
   .pp-team-grid::after{
     background:rgba(0,0,0,0.03);

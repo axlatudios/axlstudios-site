@@ -70,6 +70,12 @@ export function setupAdaptiveVideos({ prefersReducedMotion }) {
     video.dataset.playing = "true";
   };
 
+  const isNearViewport = (video) => {
+    const rect = video.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    return rect.bottom >= -160 && rect.top <= viewportHeight + 240;
+  };
+
   const hydrateAndPlay = (video) => {
     hydrateVideo(video);
 
@@ -128,8 +134,15 @@ export function setupAdaptiveVideos({ prefersReducedMotion }) {
         return;
       }
 
+      hydrateVideo(video);
+
       if (observer) {
         observer.observe(video);
+
+        if (video.classList.contains("pp-hero-bg") || isNearViewport(video)) {
+          hydrateAndPlay(video);
+        }
+
         return;
       }
 
@@ -139,6 +152,8 @@ export function setupAdaptiveVideos({ prefersReducedMotion }) {
 
   syncVideos();
   prefersReducedMotion.addEventListener("change", syncVideos);
+  window.addEventListener("pageshow", retryPlayback);
+  window.addEventListener("scroll", retryPlayback, { passive: true });
   document.addEventListener("pointerdown", retryPlayback, { passive: true });
   document.addEventListener("touchstart", retryPlayback, { passive: true });
   document.addEventListener("visibilitychange", () => {
