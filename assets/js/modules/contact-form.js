@@ -8,6 +8,7 @@ export function setupContactForm() {
 
   const okMessage = form.querySelector(".pp-form-msg--ok");
   const errorMessage = form.querySelector(".pp-form-msg--err");
+  const endpoint = form.getAttribute("action");
 
   function show(element, shouldShow) {
     if (element) {
@@ -21,30 +22,51 @@ export function setupContactForm() {
     show(errorMessage, false);
 
     const data = new FormData(form);
-    if ((data.get("_company") || "").toString().trim()) {
-      form.reset();
-      show(okMessage, true);
-      return;
-    }
 
     const firstName = (data.get("nome") || "").toString().trim();
+    const lastName = (data.get("cognome") || "").toString().trim();
     const email = (data.get("email") || "").toString().trim();
     const message = (data.get("message") || "").toString().trim();
     const hasConsent = data.get("consent") === "on";
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    if (!firstName || !emailOk || !message || !hasConsent) {
+    if (!firstName || !lastName || !emailOk || !message || !hasConsent || !endpoint) {
       show(errorMessage, true);
       return;
     }
 
     submitButton.setAttribute("aria-disabled", "true");
+    submitButton.disabled = true;
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 700));
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: data,
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact form submission failed");
+      }
+
       form.reset();
       show(okMessage, true);
+      show(errorMessage, false);
+      const enhancedSelect = document.querySelector(".pp-sel__btn");
+      const defaultOption = form.querySelector("#c_servizio option[disabled]");
+      if (enhancedSelect && defaultOption) {
+        enhancedSelect.textContent = defaultOption.textContent || "Seleziona…";
+      }
+    } catch {
+      if (errorMessage) {
+        errorMessage.textContent = "Invio non riuscito. Verifica la connessione o riprova piu tardi.";
+      }
+      show(okMessage, false);
+      show(errorMessage, true);
     } finally {
+      submitButton.disabled = false;
       submitButton.removeAttribute("aria-disabled");
     }
   });

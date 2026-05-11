@@ -685,10 +685,10 @@
 
     <!-- Row: Email + Social (card glass) -->
     <div class="pp-contact-toprow">
-      <a class="pp-contact-card" href="mailto:axl@studios.com">
+      <a class="pp-contact-card" href="mailto:axlstudios@axlstudios.net">
         <span class="pp-card-ic" aria-hidden="true"></span>
         <span class="pp-card-label">E-Mail</span>
-        <span class="pp-card-val">axl@studios.com</span>
+        <span class="pp-card-val">axlstudios@axlstudios.net</span>
       </a>
 
       <div class="pp-contact-card" role="group" aria-label="Social">
@@ -705,7 +705,17 @@
     </div>
 
     <!-- Form 2 colonne -->
-    <form id="axlContactForm" class="pp-form" method="post" novalidate>
+    <form
+      id="axlContactForm"
+      class="pp-form"
+      method="post"
+      action="https://formsubmit.co/ajax/axlstudios@axlstudios.net"
+      novalidate>
+
+      <input type="hidden" name="_subject" value="Nuova richiesta dal sito AXL Studios">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_honey" value="">
 
       <div class="pp-field">
         <label for="c_nome" class="pp-label">Nome</label>
