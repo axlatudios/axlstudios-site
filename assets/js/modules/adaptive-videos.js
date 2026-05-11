@@ -22,18 +22,26 @@ export function setupAdaptiveVideos({ prefersReducedMotion }) {
     video.setAttribute("webkit-playsinline", "");
   };
 
+  const ensureVideoSource = (video) => {
+    const source = video.querySelector("source");
+    const src = video.dataset.videoSrc;
+
+    if (source && !source.getAttribute("src") && src) {
+      source.setAttribute("src", src);
+    }
+
+    if (!video.getAttribute("src") && !source?.getAttribute("src") && src) {
+      video.setAttribute("src", src);
+    }
+  };
+
   const hydrateVideo = (video) => {
     if (video.dataset.hydrated === "true") {
       return;
     }
 
-    const src = video.dataset.videoSrc;
-    if (!src) {
-      return;
-    }
-
     primeVideo(video);
-    video.src = src;
+    ensureVideoSource(video);
     video.dataset.hydrated = "true";
     hydratedVideos.add(video);
     video.load();
@@ -45,11 +53,7 @@ export function setupAdaptiveVideos({ prefersReducedMotion }) {
     }
 
     video.pause();
-    video.removeAttribute("src");
-    video.load();
-    video.dataset.hydrated = "false";
     video.dataset.playing = "false";
-    hydratedVideos.delete(video);
   };
 
   const playVideo = (video) => {
