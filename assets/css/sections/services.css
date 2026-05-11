@@ -38,6 +38,7 @@
   font-weight:600;
   font-size:clamp(18px,2.4vw,32px);
   line-height:1.2;
+  text-wrap:pretty;
 }
 
 .pp-services-strip{
@@ -179,6 +180,13 @@
 }
 
 @media (max-width:560px){
+  .pp-services-head{ gap:16px; }
+  .pp-services-bg{ height:clamp(500px,150vw,680px); }
+  .pp-service{
+    --card-w:min(86vw,360px);
+  }
+  .pp-service-inner{ padding:24px 20px 28px; }
+  .pp-service-title br{ display:none; }
   .pp-services-desc{ font-weight:600; }
   .pp-services-desc{ font-size:clamp(14px,4.2vw,18px); }
   .pp-service-text{ font-size:clamp(13px,3.8vw,16px); }

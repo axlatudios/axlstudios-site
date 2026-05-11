@@ -49,6 +49,7 @@
   font-weight:700;
   font-size:clamp(16px,3vw,48px);
   line-height:1.25;
+  text-wrap:pretty;
 }
 
 .pp-story-grid{
@@ -130,5 +131,23 @@
     bottom:auto;
     display:inline;
     margin-left:.15em;
+  }
+}
+
+@media (max-width:560px){
+  .pp-story-title br,
+  .pp-story-subtitle br{
+    display:none;
+  }
+  .pp-quote{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .pp-quote .pp-quote-mark{
+    font-size:clamp(44px,12vw,64px);
+  }
+  .pp-quote-text{
+    font-size:clamp(18px,6vw,28px);
+    line-height:1.35;
   }
 }

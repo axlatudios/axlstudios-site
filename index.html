@@ -37,6 +37,7 @@
     </head>
 
     <body>
+    <a class="pp-skip-link" href="#home">Salta al contenuto</a>
     <!-- Wrapper fisso a 1920px per fedeltà al pixel -->
     <div class="pp-wrapper">
         <!-- Navbar fissa, trasparente, senza blur -->
@@ -571,8 +572,8 @@
             <div class="pp-toolkit-copy">
             <h3 class="pp-toolkit-block-title">Social &amp; Strategy</h3>
             <p>
-                Software e piattaforme per analizzare, creare e <br> gestire contenuti che connettono davvero. <br>
-                Dalla pianificazione alla pubblicazione, tutto <br> nasce da metodo e visione.
+              Software e piattaforme per analizzare, creare e gestire contenuti che connettono davvero.
+              Dalla pianificazione alla pubblicazione, tutto nasce da metodo e visione.
             </p>
             </div>
 
@@ -691,16 +692,17 @@
         <span class="pp-card-val">axlstudios@axlstudios.net</span>
       </a>
 
-      <div class="pp-contact-card" role="group" aria-label="Social">
+      <div class="pp-contact-card" aria-labelledby="contactSocialTitle">
         <span class="pp-card-ic" aria-hidden="true"></span>
-        <span class="pp-card-label">Social</span>
+        <span class="pp-card-label" id="contactSocialTitle">Social</span>
         <div class="pp-card-social">
-          <a aria-label="Instagram" href="#" class="pp-social-btn">IG</a>
-          <a aria-label="Facebook"  href="#" class="pp-social-btn">Fb</a>
-          <a aria-label="X"         href="#" class="pp-social-btn">X</a>
-          <a aria-label="LinkedIn"  href="#" class="pp-social-btn">in</a>
-          <a aria-label="Facebook p." href="#" class="pp-social-btn">F</a>
+          <span class="pp-social-btn pp-social-btn--static" aria-hidden="true">IG</span>
+          <span class="pp-social-btn pp-social-btn--static" aria-hidden="true">Fb</span>
+          <span class="pp-social-btn pp-social-btn--static" aria-hidden="true">X</span>
+          <span class="pp-social-btn pp-social-btn--static" aria-hidden="true">in</span>
+          <span class="pp-social-btn pp-social-btn--static" aria-hidden="true">F</span>
         </div>
+        <span class="pp-card-note">Profili social in aggiornamento.</span>
       </div>
     </div>
 
@@ -789,8 +791,8 @@
       </div>
 
 
-      <p class="pp-form-msg pp-form-msg--ok" hidden>Messaggio inviato! Ti ricontatteremo a breve.</p>
-      <p class="pp-form-msg pp-form-msg--err" hidden>Invio non riuscito. Controlla i campi.</p>
+      <p class="pp-form-msg pp-form-msg--ok" role="status" aria-live="polite" hidden>Messaggio inviato! Ti ricontatteremo a breve.</p>
+      <p class="pp-form-msg pp-form-msg--err" role="alert" aria-live="assertive" hidden>Invio non riuscito. Controlla i campi.</p>
     </form>
   </div>
 </section>
@@ -829,23 +831,24 @@
         loading="lazy"
       />
 
-      <nav class="axl-footer__social" aria-label="Social">
-        <a href="#" aria-label="Instagram" class="sbtn">
+      <div class="axl-footer__social axl-footer__social--static" aria-label="Social in aggiornamento">
+        <span class="sbtn sbtn--static" aria-hidden="true">
           <img src="assets/icons/instagram.svg" alt="" class="sbtn__icon" loading="lazy" decoding="async" />
-        </a>
-        <a href="#" aria-label="Facebook" class="sbtn">
+        </span>
+        <span class="sbtn sbtn--static" aria-hidden="true">
           <img src="assets/icons/Facebook.svg" alt="" class="sbtn__icon" loading="lazy" decoding="async" />
-        </a>
-        <a href="#" aria-label="X" class="sbtn">
+        </span>
+        <span class="sbtn sbtn--static" aria-hidden="true">
           <img src="assets/icons/x.svg" alt="" class="sbtn__icon" loading="lazy" decoding="async" />
-        </a>
-        <a href="#" aria-label="LinkedIn" class="sbtn">
+        </span>
+        <span class="sbtn sbtn--static" aria-hidden="true">
           <img src="assets/icons/linkedin.svg" alt="" class="sbtn__icon" loading="lazy" decoding="async" />
-        </a>
-        <a href="#" aria-label="Fiverr" class="sbtn">
+        </span>
+        <span class="sbtn sbtn--static" aria-hidden="true">
           <img src="assets/icons/Fiverr.svg" alt="" class="sbtn__icon" loading="lazy" decoding="async" />
-        </a>
-      </nav>
+        </span>
+      </div>
+      <p class="axl-footer__social-note">Canali social in aggiornamento.</p>
     </div>
 
     <!-- 3b) Menu -->

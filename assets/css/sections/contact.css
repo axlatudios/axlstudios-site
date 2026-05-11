@@ -38,6 +38,7 @@
   line-height:1.25;
   color:#fff;
   max-width:750px;
+  text-wrap:pretty;
 }
 .pp-contact-section .pp-contact-desc em{
   font-style:italic;
@@ -66,8 +67,8 @@
   min-width:280px;
   display:flex;
   flex-direction:column;
-  gap:10px;
-  padding:clamp(20px,2.6vw,32px);
+  gap:8px;
+  padding:clamp(14px,2vw,22px);
   border-radius:16px;
   background:rgba(255,255,255,0.06);
   -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
@@ -82,6 +83,10 @@
   transform:translateY(-2px);
   border-color:var(--axl-pink-500);
   box-shadow:0 8px 36px rgba(238,35,123,.22);
+}
+.pp-contact-section .pp-contact-card:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:4px;
 }
 .pp-contact-section .pp-card-ic{
   font-size:clamp(24px,3vw,32px);
@@ -104,8 +109,8 @@
 .pp-contact-section .pp-card-social{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
-  margin-top:6px;
+  gap:10px;
+  margin-top:2px;
 }
 .pp-contact-section .pp-social-btn{
   width:36px;
@@ -127,9 +132,18 @@
   border-color:var(--axl-pink-500);
   background:rgba(255,255,255,0.12);
 }
+.pp-contact-section .pp-social-btn--static{
+  cursor:default;
+  pointer-events:none;
+  opacity:.72;
+}
 .pp-contact-section .pp-social-btn:focus-visible{
   outline:2px solid var(--axl-pink-500);
   outline-offset:4px;
+}
+.pp-contact-section .pp-card-note{
+  font:500 13px/1.45 "Inter";
+  color:rgba(250,250,251,.78);
 }
 
 .pp-contact-section .pp-contact-body{
@@ -219,6 +233,32 @@
   gap:10px;
   row-gap:10px;
   margin-top:4px;
+}
+.pp-contact-section .pp-form-msg{
+  margin:0;
+  font:600 14px/1.5 "Inter";
+}
+
+.pp-contact-section .pp-consent{
+  grid-column:1 / -1;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.pp-contact-section .pp-checkbox{
+  flex:0 0 auto;
+  width:18px;
+  height:18px;
+  margin:3px 0 0;
+  accent-color:var(--axl-pink-500);
+}
+.pp-contact-section .pp-checkbox:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:3px;
+}
+.pp-contact-section .pp-consent-label{
+  font:500 14px/1.5 "Inter";
+  color:rgba(250,250,251,.92);
 }
 .pp-contact-section .pp-submit.pp-btn{
   padding-left:56px;
@@ -337,10 +377,50 @@
   .pp-contact-section .pp-contact-toprow{
     flex-direction:column;
   }
-  .pp-contact-section .pp-contact-card{ width:100%; }
+  .pp-contact-section .pp-contact-card{
+    flex:none;
+    width:100%;
+    min-width:0;
+  }
 }
 @media (max-width:560px){
+  .pp-contact-section{
+    padding:64px 0 88px;
+  }
+  .pp-contact-section .pp-contact-head{
+    gap:16px;
+    padding-bottom:28px;
+  }
+  .pp-contact-section .pp-contact-desc br{ display:none; }
   .pp-contact-section .pp-contact-desc{ font-size:clamp(14px,4.2vw,18px); }
+  .pp-contact-section .pp-contact-toprow{
+    gap:16px;
+    padding-bottom:36px;
+  }
+  .pp-contact-section .pp-contact-card{
+    min-width:0;
+    gap:8px;
+    padding:16px 14px;
+  }
+  .pp-contact-section .pp-contact-card[aria-labelledby="contactSocialTitle"]{
+    padding-bottom:22px;
+  }
+  .pp-contact-section .pp-card-social{
+    gap:10px;
+    margin-top:4px;
+  }
+  .pp-contact-section .pp-card-note{
+    font-size:12px;
+  }
+  #axlContactForm.pp-form{
+    margin-top:8px;
+  }
+  .pp-contact-section .pp-form{ padding:18px 16px; }
+  .pp-contact-section .pp-form-foot{ justify-content:stretch; }
+  .pp-contact-section .pp-form-foot .pp-btn{
+    width:100%;
+    justify-content:space-between;
+  }
 }
 
 .pp-contact .pp-form{

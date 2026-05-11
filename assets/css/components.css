@@ -48,6 +48,11 @@
   outline-color:#EE237B;
   transform:translateY(-2px);
 }
+.pp-service-cta:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:4px;
+  box-shadow:0 0 0 3px rgba(238,35,123,.24);
+}
 .pp-service-cta:active,
 .pp-service-cta.is-pressed{
   color:var(--axl-pink-600);
@@ -345,5 +350,18 @@ select.pp-select--enhance{
   .pp-project-cta,
   .pp-toolkit-cta-btn{
     transform:none !important;
+  }
+}
+
+@media (max-width:560px){
+  .pp-service-cta,
+  .pp-service-cta--start,
+  .pp-service-cta--center,
+  .pp-toolkit-cta-btn{
+    width:100%;
+    max-width:100%;
+    justify-content:space-between;
+    padding:10px 14px 10px 20px;
+    gap:12px;
   }
 }

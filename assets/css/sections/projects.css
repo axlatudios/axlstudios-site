@@ -31,6 +31,7 @@
   margin:0;
   font-size:clamp(18px,2.4vw,32px);
   font-weight:600;
+  text-wrap:pretty;
 }
 .pp-projects-desc em{
   font-style:italic;
@@ -150,6 +151,10 @@
     flex-direction:column;
     align-items:flex-start;
   }
+  .pp-projects-hero-bar{
+    padding:24px var(--container-pad);
+    gap:20px;
+  }
   .pp-projects-split{
     flex-direction:column;
     height:auto;
@@ -167,6 +172,26 @@
 }
 
 @media (max-width:560px){
+  .pp-projects{
+    padding:64px 0 88px;
+  }
+  .pp-projects-head{
+    gap:16px;
+    padding-bottom:28px;
+  }
+  .pp-projects-hero{
+    height:clamp(360px,82vw,460px);
+  }
+  .pp-projects-hero-bar{
+    padding:18px var(--container-pad);
+    gap:16px;
+  }
+  .pp-projects-stack{ gap:24px; }
+  .pp-projects-panel{
+    gap:24px;
+    padding:20px var(--container-pad) 28px;
+  }
+  .pp-panel-inner{ gap:24px; }
   .pp-projects-desc{ font-size:clamp(14px,4.2vw,18px); }
   .pp-project-text{ font-size:clamp(13px,3.8vw,16px); }
 }
