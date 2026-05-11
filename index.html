@@ -8,11 +8,11 @@
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
 
     <!-- PNG fallback -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16.png">
 
     <!-- iOS -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
 
     <!-- Opzionali -->
     <!-- <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#EE237B"> -->
@@ -20,6 +20,9 @@
     <meta name="theme-color" content="#151415">
 
     <title>AXL Studios</title>
+    <link rel="preload" as="image" href="./assets/hero-placeholder-1920x940.jpg">
+    <link rel="preload" as="font" href="./assets/fonts/Urbanist-VariableFont_wght.ttf" type="font/ttf" crossorigin>
+    <link rel="preload" as="font" href="./assets/fonts/Inter-VariableFont_opsz,wght.ttf" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="./styles.css" />
     <meta name="robots" content="noindex" />
     </head>
@@ -46,7 +49,7 @@
         <a href="#projects" class="pp-nav-item" data-close>Progetti</a>
         <a href="#team" class="pp-nav-item" data-close>Team</a>
         <a href="#stack" class="pp-nav-item" data-close>Toolkit</a>
-        <a href="#stack" class="pp-nav-item" data-close>Faq</a>
+        <a href="#faq" class="pp-nav-item" data-close>Faq</a>
         <a href="#contact" class="pp-nav-item pp-contact" data-close>
           <span>Contattaci</span>
           <svg width="12" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -58,14 +61,16 @@
         </header>
 
         <!-- HERO 1920×1080 -->
-        <section class="pp-hero" id="home" style="background-image:url('./assets/hero-placeholder-1920x940.jpg')">
+        <section class="pp-hero" id="home">
         <!-- Video come nel mock (se presente). Metti il file in ./assets/gifAxL.mp4 -->
         <video class="pp-hero-bg"
-                src="./assets/gifAxL.mp4"
+          data-video-src="./assets/gifAxL.mp4"
                 autoplay
                 muted
                 loop
                 playsinline
+          preload="none"
+          aria-hidden="true"
                 poster="./assets/hero-placeholder-1920x940.jpg">
         </video>
 
@@ -101,7 +106,7 @@
         </div>
         </section>
         <!-- STORYTELLING / ABOUT BLOCK -->
-        <section class="pp-story" id="about" style="background-image:url('./assets/story-placeholder-1920x1310.jpg')">
+        <section class="pp-story" id="about">
         <div class="pp-story-inner">
             <!-- Titolo principale -->
             <h2 class="pp-story-title">
@@ -183,9 +188,7 @@
 
         <!-- Strip 1920×800 con gradient poster -->
         <div class="pp-services-strip">
-              <video class="pp-services-bg-video" autoplay muted loop playsinline>
-                <source src="./assets/gifAxL.mp4" type="video/mp4">
-            </video>
+              <video class="pp-services-bg-video" autoplay muted loop playsinline preload="none" aria-hidden="true" poster="./assets/bgcard.png" data-video-src="./assets/gifAxL.mp4"></video>
             <div class="pp-services-bg" aria-hidden="true"></div>
             <!-- Track infinito: cloni generati via JS -->
             <div class="pp-services-viewport" aria-label="Servizi" role="listbox">
@@ -329,9 +332,8 @@
                 Sit odio in viverra curabitur vitae sed. Pellentesque sagittis vulputate aliquet sagittis venenatis.
                 </p>
                 <a href="#contact"
-                  class="pp-service-cta"
-                  aria-label="Scopri di più"
-                  style="display:inline-flex; align-self:flex-start; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+                  class="pp-service-cta pp-service-cta--start"
+                  aria-label="Scopri di più">
                   <span>Scopri di più</span>
                   <span class="pp-service-cta-badge" aria-hidden="true">
                     <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -359,9 +361,8 @@
                 </p>
                 </div>
                 <a href="#contact"
-                  class="pp-service-cta"
-                  aria-label="Scopri di più"
-                  style="display:inline-flex; align-self:flex-start; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+                  class="pp-service-cta pp-service-cta--start"
+                  aria-label="Scopri di più">
                   <span>Scopri di più</span>
                   <span class="pp-service-cta-badge" aria-hidden="true">
                     <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -388,9 +389,8 @@
                 </p>
                 </div>
                 <a href="#contact"
-                  class="pp-service-cta"
-                  aria-label="Scopri di più"
-                  style="display:inline-flex; align-self:flex-start; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+                  class="pp-service-cta pp-service-cta--start"
+                  aria-label="Scopri di più">
                   <span>Scopri di più</span>
                   <span class="pp-service-cta-badge" aria-hidden="true">
                     <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -419,9 +419,7 @@
     <div class="pp-team-grid">
 
     <!-- ✅ Video come background dell'intera sezione TEAM -->
-    <video class="pp-team-bg-video" autoplay muted loop playsinline poster="./assets/bgcard.png">
-        <source src="./assets/gifAxL.mp4" type="video/mp4">
-    </video>
+    <video class="pp-team-bg-video" autoplay muted loop playsinline preload="none" aria-hidden="true" poster="./assets/bgcard.png" data-video-src="./assets/gifAxL.mp4"></video>
 
     <!-- Colonna 1 -->
     <article class="pp-team-col">
@@ -463,7 +461,7 @@
             <h3 class="pp-team-name">Fabio</h3>
             <p class="pp-team-role">Social &amp; Digital Strategist</p>
             <p class="pp-team-bio">
-              Sviluppa strategie trasformando contenuti, dati e creatività in una comunicazione chiara, efficace e riconoscibile.
+        Sviluppa strategie trasformando contenuti, dati e creatività in una comunicazione chiara, efficace e riconoscibile.
         Definisce identità, tone of voice e narrativa dei brand, costruendo piani editoriali fondati su analisi, obiettivi e posizionamento.
         Si occupa di community building, performance dei contenuti, ottimizzazione dei canali social e campagne mirate, integrando storytelling, 
         dati e strategia per generare risultati misurabili e duraturi.
@@ -472,12 +470,11 @@
         </div>
     </article>
     </div>
-    <div style="padding-top: 80px;">
+    <div class="pp-spacer-top-80">
       <!-- CTA verso Toolkit (centrata) -->
       <a href="#stack" 
-        class="pp-service-cta"
-        aria-label="Scopri di più"
-        style="display:flex; margin:24px auto 0; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+        class="pp-service-cta pp-service-cta--center"
+        aria-label="Scopri di più">
         <span>Dai un’occhiata al nostro toolkit</span>
         <span class="pp-service-cta-badge" aria-hidden="true">
           <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -531,7 +528,6 @@
             </div>
         </div>
         <div class="pp-divider"></div>
-
     
         <!-- CATEGORY 2 -->
 
@@ -583,10 +579,10 @@
             <!-- CTA centrale -->
             <div class="pp-toolkit-cta">
             <!-- CTA Toolkit centrata -->
-            <a class="pp-toolkit-cta-btn"
+            <a
+              class="pp-toolkit-cta-btn pp-toolkit-cta-btn--center"
               href="#faq"
-              aria-label="Vai alle FAQ"
-              style="display:flex; margin:24px auto 0; width:max-content; padding:8px 39px 8px 70px; gap:10px;">
+              aria-label="Vai alle FAQ">
               <span>VUOI SAPERNE DI PIÙ? LEGGI LE FAQ</span>
               <span class="pp-toolkit-cta-badge" aria-hidden="true">
                     <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -618,19 +614,17 @@
                 <span class="pp-faq-q">Che tipo di progetti realizzate?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-1" hidden style="margin-top: -16px; padding-bottom: 30px;">
+            <div id="faq-1" class="pp-faq-a pp-faq-answer" hidden>
                 Realizziamo landing ad alte performance, siti corporate, e web-app custom. Design in Figma → handoff → sviluppo (React/Angular/Tailwind) con QA e ottimizzazioni.
             </div>
             </article>
-
-            
 
             <article class="pp-faq-row" role="listitem">
             <button class="pp-faq-toggle" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2">
                 <span class="pp-faq-q">Lavorate solo con aziende o anche con privati?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-2" hidden style="margin-top: -16px; padding-bottom: 30px;">
+            <div id="faq-2" class="pp-faq-a pp-faq-answer" hidden>
                 Principalmente PMI, startup e professionisti. Se il progetto ha obiettivi chiari e valore, lo prendiamo in carico a prescindere dalla dimensione.
             </div>
             </article>
@@ -640,7 +634,7 @@
                 <span class="pp-faq-q">Quanto dura in media un progetto?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-3" hidden style="margin-top: -16px; padding-bottom: 30px;">
+            <div id="faq-3" class="pp-faq-a pp-faq-answer" hidden>
                 Indicativamente: landing 2–3 settimane, sito corporate 4–6 settimane; web-app su sprint (roadmap condivisa).
             </div>
             </article>
@@ -650,7 +644,7 @@
                 <span class="pp-faq-q">Lavorate anche da remoto?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-4" hidden style="margin-top: -16px; padding-bottom: 30px;">
+            <div id="faq-4" class="pp-faq-a pp-faq-answer" hidden>
                 Sì. Processi e tool sono pensati per collaborazioni full-remote; facciamo meeting in presenza quando serve.
             </div>
             </article>
@@ -660,7 +654,7 @@
                 <span class="pp-faq-q">Offrite anche manutenzione o supporto post-lancio?</span>
                 <svg class="pp-faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 9.3a1 1 0 0 1 1.4 0L12 13.2l3.9-3.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 10.7a1 1 0 0 1 0-1.4Z"/></svg>
             </button>
-            <div id="faq-5"  hidden style="margin-top: -16px; padding-bottom: 30px;">
+            <div id="faq-5" class="pp-faq-a pp-faq-answer" hidden>
                 Certo: piani di supporto, piccoli sviluppi evolutivi, SEO on-page di base e monitoraggio performance.
             </div>
             </article>
@@ -780,308 +774,7 @@
   </div>
 </section>
 
-
-        
-
-
-
-
-    <script>
-    (function(){
-    const track = document.getElementById('servicesTrack');
-    const viewport = track.parentElement;
-
-    // calcolo dimensioni card dinamiche
-    let cards = Array.from(track.children);
-    let BASE_COUNT = cards.length;
-    function cardW(){ return cards[0].getBoundingClientRect().width; }
-
-    // Cloni per loop infinito
-    function populateClones(){
-        const fragStart = document.createDocumentFragment();
-        const fragEnd   = document.createDocumentFragment();
-        cards.forEach(c => fragEnd.appendChild(c.cloneNode(true)));
-        [...cards].reverse().forEach(c => fragStart.appendChild(c.cloneNode(true)));
-        track.insertBefore(fragStart, track.firstChild);
-        track.appendChild(fragEnd);
-    }
-    populateClones();
-
-    // Stato
-    let startX = 0, currentX = 0, prevX = 0, isDown = false;
-    let translate = 0, TOTAL = 0, LEFT_LIMIT = 0, RIGHT_LIMIT = 0;
-
-    function recalc(){
-        const CW = cardW();
-        const triples = BASE_COUNT * 3;
-        TOTAL = CW * triples;
-        LEFT_LIMIT  = -TOTAL + (CW * BASE_COUNT);
-        RIGHT_LIMIT = 0 - (CW * BASE_COUNT);
-        translate   = RIGHT_LIMIT; // centrato sui cloni di sinistra
-        track.style.transform = `translateX(${translate}px)`;
-    }
-    recalc();
-
-    // Drag
-    function wrap(){
-        if (translate < LEFT_LIMIT)  translate += cardW() * BASE_COUNT;
-        if (translate > RIGHT_LIMIT) translate -= cardW() * BASE_COUNT;
-    }
-    function onDown(e){
-        isDown = true;
-        viewport.classList.add('dragging');
-        document.body.style.userSelect = 'none';
-        startX = (e.touches ? e.touches[0].clientX : e.clientX);
-        prevX  = startX;
-    }
-    function onMove(e){
-        if(!isDown) return;
-        currentX = (e.touches ? e.touches[0].clientX : e.clientX);
-        const dx = currentX - prevX;
-        prevX = currentX;
-        translate += dx;
-        wrap();
-        track.style.transform = `translateX(${translate}px)`;
-        e.preventDefault(); // blocca lo scroll orizzontale mentre trascini
-    }
-    function onUp(){
-        isDown = false;
-        viewport.classList.remove('dragging');
-        document.body.style.userSelect = '';
-    }
-
-    viewport.addEventListener('mousedown', onDown);
-    viewport.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
-
-    viewport.addEventListener('touchstart', onDown, {passive:false});
-    viewport.addEventListener('touchmove',  onMove, {passive:false});
-    window.addEventListener('touchend', onUp);
-
-    viewport.addEventListener('dragstart', e => e.preventDefault());
-
-    // Reflow al resize / orientation
-    let rid;
-    window.addEventListener('resize', () => {
-        cancelAnimationFrame(rid);
-        rid = requestAnimationFrame(recalc);
-    });
-    })();
-    </script>
-
-    <script>
-    (function(){
-    const cb = document.getElementById('ppMenu');
-    const burger = document.querySelector('label.pp-burger');
-    const nav = document.getElementById('primaryNav');
-    const links = nav.querySelectorAll('[data-close]');
-
-    function syncAria(){
-        const open = cb.checked;
-        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        nav.setAttribute('aria-hidden', open ? 'false' : 'true');
-        document.documentElement.style.overflow = open ? 'hidden' : '';
-        document.body.style.overflow = open ? 'hidden' : '';
-    }
-    cb.addEventListener('change', syncAria);
-    syncAria();
-
-    links.forEach(a => a.addEventListener('click', () => {
-        cb.checked = false;
-        syncAria();
-    }));
-    })();
-</script>
-    <script>
-    (function(){
-    const rows = Array.from(document.querySelectorAll('.pp-faq-row'));
-    if (!rows.length) return;
-
-    const toggles = rows.map(r => r.querySelector('.pp-faq-toggle'));
-    function closeAll(except){
-        toggles.forEach(btn=>{
-        if (btn===except) return;
-        const panel = document.getElementById(btn.getAttribute('aria-controls'));
-        btn.setAttribute('aria-expanded','false');
-        if(panel) panel.hidden = true;
-        });
-    }
-
-    toggles.forEach(btn=>{
-        const panel = document.getElementById(btn.getAttribute('aria-controls'));
-        if(!panel) return;
-        btn.addEventListener('click', ()=>{
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        closeAll(btn);
-        btn.setAttribute('aria-expanded', String(!open));
-        panel.hidden = open;
-        });
-    });
-
-    // deep-link: #faq-3 apre direttamente quella
-    if (location.hash) {
-        const panel = document.querySelector(location.hash);
-        if (panel && panel.classList.contains('pp-faq-a')) {
-        const btn = document.getElementById(panel.getAttribute('aria-labelledby'));
-        if (btn){ closeAll(btn); btn.setAttribute('aria-expanded','true'); panel.hidden = false; }
-        }
-    }
-    })();
-    </script>
-
- <script>
-(function(){
-  const f = document.getElementById('axlContactForm');
-  if(!f) return;
-
-  const ok = f.querySelector('.pp-form-msg--ok');
-  const err = f.querySelector('.pp-form-msg--err');
-  const submitBtn = document.getElementById('c_submit');
-
-  function show(el, on){ el.hidden = !on; }
-
-  f.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    show(ok,false); show(err,false);
-
-    const data = new FormData(f);
-    if ((data.get('_company')||'').trim()) { // honeypot
-      f.reset(); show(ok,true); return;
-    }
-
-    // 🔧 campi corretti rispetto al tuo markup
-    const nome     = (data.get('nome')||'').toString().trim();
-    const cognome  = (data.get('cognome')||'').toString().trim();
-    const email    = (data.get('email')||'').toString().trim();
-    const servizio = (data.get('servizio')||'').toString().trim();
-    const message  = (data.get('message')||'').toString().trim();
-    const consent  = data.get('consent') === 'on'; // checkbox
-
-    const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    if(!nome || !emailOk || !message || !consent){
-      show(err,true); return;
-    }
-
-    submitBtn.setAttribute('aria-disabled','true');
-
-    // TODO: sostituisci con il tuo endpoint reale
-    await new Promise(r=>setTimeout(r,700));
-
-    f.reset();
-    show(ok,true);
-    submitBtn.removeAttribute('aria-disabled');
-  });
-})();
-</script>
-
-<script>
-(function(){
-  function enhanceSelect(sel){
-    if(sel.dataset.enhanced) return;
-    sel.dataset.enhanced = "true";
-    sel.classList.add("pp-select--enhance");
-
-    // Aggiungo una classe al wrapper per spegnere la freccia CSS
-    const wrap = document.createElement("div");
-    wrap.className = "pp-sel";
-    wrap.setAttribute("role","combobox");
-    wrap.setAttribute("aria-haspopup","listbox");
-    wrap.setAttribute("aria-expanded","false");
-    // segnala "enhanced" al container originale
-    sel.closest(".pp-selectwrap")?.classList.add("is-enhanced");
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "pp-sel__btn";
-    // testo iniziale: usa option selezionata o fallback "Seleziona…"
-    btn.textContent = sel.options[sel.selectedIndex]?.text || sel.getAttribute("placeholder") || "Seleziona…";
-    wrap.appendChild(btn);
-
-    const list = document.createElement("ul");
-    list.className = "pp-sel__list";
-    list.setAttribute("role","listbox");
-    wrap.appendChild(list);
-
-    // CREA OPZIONI, SALTANDO placeholder/disabled/empty
-    [...sel.options].forEach((opt)=>{
-      if (opt.disabled || opt.value === "") return;    // <<— evita il placeholder
-      const li = document.createElement("li");
-      li.className = "pp-sel__opt";
-      li.setAttribute("role","option");
-      li.setAttribute("data-value", opt.value);
-      li.textContent = opt.text;
-      if(opt.selected) li.setAttribute("aria-selected","true");
-      li.addEventListener("click", ()=>{
-        sel.value = opt.value;               // aggiorna la select per il submit
-        btn.textContent = opt.text;
-        list.querySelectorAll(".pp-sel__opt[aria-selected]").forEach(n=>n.removeAttribute("aria-selected"));
-        li.setAttribute("aria-selected","true");
-        wrap.dataset.open = "false";
-        wrap.setAttribute("aria-expanded","false");
-        sel.dispatchEvent(new Event("change", {bubbles:true}));
-      });
-      list.appendChild(li);
-    });
-
-    btn.addEventListener("click", ()=>{
-      const open = wrap.dataset.open === "true";
-      wrap.dataset.open = String(!open);
-      wrap.setAttribute("aria-expanded", String(!open));
-    });
-
-    // chiudi al di fuori / ESC
-    document.addEventListener("click", (e)=>{
-      if(!wrap.contains(e.target)){
-        wrap.dataset.open = "false";
-        wrap.setAttribute("aria-expanded","false");
-      }
-    });
-    document.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape"){
-        wrap.dataset.open = "false";
-        wrap.setAttribute("aria-expanded","false");
-        btn.focus();
-      }
-    });
-
-    sel.parentNode.insertBefore(wrap, sel);
-    wrap.appendChild(sel); // conserva nel DOM per la submission
-  }
-
-  // attiva solo le select che vuoi
-  document.querySelectorAll("select.pp-select.pp-select--custom, select#c_servizio").forEach(enhanceSelect);
-})();
-</script>
-
-<script>
-(() => {
-  // Cambia qui se vuoi un'ancora nella stessa pagina: const HOME_HREF = '#top';
-  const HOME_HREF = '/';
-
-  const logo = document.querySelector('.pp-nav-left .pp-logo');
-  if (!logo) return;
-
-  // Accessibilità e UX
-  logo.setAttribute('role', 'link');
-  logo.setAttribute('tabindex', '0');
-  logo.setAttribute('aria-label', 'AXL Studios — Home');
-
-  const goHome = () => {
-    // Se vuoi solo scroll in cima quando sei già nella home:
-    if (HOME_HREF === '#top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      window.location.assign(HOME_HREF);
-    }
-  };
-
-  logo.addEventListener('click', (e) => { e.preventDefault(); goHome(); });
-  logo.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
-  });
-})();
-</script>
+    <script src="./assets/js/main.js" defer></script>
 
 
 <footer class="axl-footer" role="contentinfo" aria-labelledby="axl-footer-claim">

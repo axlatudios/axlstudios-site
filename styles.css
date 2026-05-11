@@ -66,6 +66,7 @@
 /* ========== 2. RESET & BASE ========== */
 *{ box-sizing:border-box; }
 html,body{ height:100%; overflow-x:clip; }
+html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
@@ -98,6 +99,19 @@ body::before{
   margin:0;
   position:relative;
   background:transparent;
+}
+
+/* Rendering below the fold */
+.pp-story,
+.pp-services,
+.pp-projects,
+.pp-team,
+.pp-toolkit,
+.pp-faq,
+.pp-contact-section,
+.axl-footer{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 900px;
 }
 
 /* ========== 3. NAVBAR ========== */
@@ -358,6 +372,7 @@ a.pp-logo:focus-visible{
   aspect-ratio:16/9;
   min-height:560px;
   overflow:hidden;
+  background-image:url("./assets/hero-placeholder-1920x940.jpg");
   background-size:cover;
   background-position:center;
 }
@@ -515,6 +530,9 @@ a.pp-logo:focus-visible{
   padding:clamp(48px,8vw,120px) var(--container-pad);
   display:flex;
   justify-content:flex-end;
+  background-image:url("./assets/story-placeholder-1920x1310.jpg");
+  background-size:cover;
+  background-position:center;
   background:transparent;
 }
 .pp-story-inner{
@@ -842,6 +860,20 @@ a.pp-logo:focus-visible{
   text-transform:uppercase;
   transition:transform .18s ease,outline-color .18s ease,box-shadow .18s ease,background-color .18s ease,color .18s ease;
   -webkit-tap-highlight-color:transparent;
+}
+.pp-service-cta--start{
+  display:inline-flex;
+  align-self:flex-start;
+  width:max-content;
+  padding:8px 39px 8px 70px;
+  gap:10px;
+}
+.pp-service-cta--center{
+  display:flex;
+  width:max-content;
+  margin:24px auto 0;
+  padding:8px 39px 8px 70px;
+  gap:10px;
 }
 .pp-service-cta:hover{
   outline-color:#EE237B;
@@ -1482,6 +1514,13 @@ a.pp-logo:focus-visible{
     0 10px 24px rgba(238,35,123,0.12);
   transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease;
 }
+.pp-toolkit-cta-btn--center{
+  display:flex;
+  width:max-content;
+  margin:24px auto 0;
+  padding:8px 39px 8px 70px;
+  gap:10px;
+}
 .pp-toolkit-cta-btn:hover{
   transform:translateY(-2px);
   border-color:var(--axl-pink-300);
@@ -1785,6 +1824,10 @@ a.pp-logo:focus-visible{
   cursor:pointer;
   text-align:left;
 }
+.pp-faq-toggle:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:6px;
+}
 .pp-faq-q{
   margin:0;
   color:#FAFAFB;
@@ -1814,6 +1857,10 @@ a.pp-logo:focus-visible{
   font-weight:400;
   font-size:clamp(14px,1.4vw,18px);
   line-height:1.6;
+}
+.pp-faq-answer{
+  margin-top:-16px;
+  padding-bottom:30px;
 }
 
 @media (max-width:980px){
@@ -1878,7 +1925,9 @@ a.pp-logo:focus-visible{
   flex-wrap:wrap;
   justify-content:flex-start;
   gap:clamp(24px,3vw,40px);
-  padding:0 var(--container-pad) clamp(40px,5vw,80px);
+  width:min(100%,var(--axl-form-max));
+  margin-inline:auto;
+  padding:0 0 clamp(40px,5vw,80px);
 }
 .pp-contact-section .pp-contact-card{
   flex:1 1 320px;
@@ -1947,6 +1996,37 @@ a.pp-logo:focus-visible{
   transform:translateY(-2px);
   border-color:var(--axl-pink-500);
   background:rgba(255,255,255,0.12);
+}
+.pp-contact-section .pp-social-btn:focus-visible,
+.sbtn:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:4px;
+}
+
+.pp-spacer-top-80{
+  padding-top:80px;
+}
+
+@media (max-width:768px){
+  .pp-hero-bg,
+  .pp-services-bg-video,
+  .pp-team-bg-video{
+    display:none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+  .pp-hero-bg,
+  .pp-services-bg-video,
+  .pp-team-bg-video{
+    display:none;
+  }
 }
 @media (max-width:768px){
   .pp-contact-section .pp-contact-toprow{
@@ -2230,11 +2310,13 @@ select.pp-select--enhance{
   grid-column:1 / -1;
 }
 @media (max-width:1280px){
+  .pp-contact-section .pp-contact-toprow,
   #axlContactForm.pp-form{
     width:min(100%,980px);
   }
 }
 @media (max-width:900px){
+  .pp-contact-section .pp-contact-toprow,
   .pp-contact-section .pp-form,
   #axlContactForm.pp-form{
     grid-template-columns:1fr;

@@ -1,0 +1,159 @@
+/* =========================================================
+   AXL Studios — hero.css
+========================================================= */
+
+.pp-hero{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  min-height:560px;
+  overflow:hidden;
+  background-image:url("../../hero-placeholder-1920x940.jpg");
+  background-size:cover;
+  background-position:center;
+}
+.pp-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--axl-bg-900);
+  z-index:0;
+}
+.pp-hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
+}
+.pp-hero-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:rgba(21,20,21,0.18);
+  -webkit-backdrop-filter:blur(10px) saturate(105%);
+  backdrop-filter:blur(10px) saturate(105%);
+}
+.pp-hero-overlay::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(70% 75% at 50% 38%,rgba(21,20,21,0) 0%,rgba(21,20,21,0.22) 100%);
+}
+.pp-hero-inner{
+  position:absolute;
+  inset:0;
+  padding:clamp(32px,6vw,96px) clamp(20px,7vw,280px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(20px,3vw,56px);
+  z-index:3;
+}
+.pp-hero-stack{
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(16px,2.4vw,32px);
+}
+.pp-title{
+  margin:0;
+  text-align:center;
+  font-size:0;
+}
+.pp-title-axl,
+.pp-title-strong,
+.pp-title-where500{
+  color:#FAFAFB;
+  font-family:"Urbanist";
+  font-weight:800;
+  line-height:1.1;
+  display:inline-block;
+  font-size:clamp(38px,6vw,104px);
+}
+.pp-title-axl{ color:var(--axl-pink-300); }
+.pp-title-where500{ font-weight:500; }
+.pp-title span + span{ margin-left:.25em; }
+
+.pp-subtitle{
+  align-self:stretch;
+  text-align:center;
+  color:#FAFAFB;
+  font-size:clamp(16px,2vw,32px);
+  font-family:"Urbanist";
+  font-weight:600;
+  line-height:1.25;
+  margin:0;
+}
+
+.pp-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:20px;
+  padding:10px 30px 10px 50px;
+  min-width:220px;
+  height:52px;
+  justify-content:center;
+  border-radius:40px;
+  background:rgba(255,255,255,0.10);
+  -webkit-backdrop-filter:blur(12px) saturate(120%);
+  backdrop-filter:blur(12px) saturate(120%);
+  border:2px solid rgba(242,135,183,0.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 8px 20px rgba(238,35,123,0.16);
+  text-decoration:none;
+  transition:.28s;
+}
+.pp-cta-text{
+  color:#fff;
+  font-size:clamp(12px,1.2vw,18px);
+  font-family:"Urbanist";
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+.pp-cta-badge{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid rgba(250,250,251,0.60);
+  background:rgba(255,255,255,0.12);
+  transition:.28s;
+}
+.pp-arrow-down{
+  width:18px;
+  height:18px;
+  fill:#FAFAFB;
+  transition:transform .28s;
+  transform:translateY(-2px);
+}
+.pp-cta:hover{
+  background:rgba(255,255,255,0.16);
+  border-color:rgba(242,135,183,0.80);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),0 12px 26px rgba(238,35,123,0.22);
+  transform:translateY(-3px);
+}
+.pp-cta:hover .pp-arrow-down{ transform:translateY(3px); }
+
+@media (max-width:768px){
+  .pp-hero-bg{ display:none; }
+}
+
+@media (max-width:560px){
+  .pp-hero{ min-height:480px; }
+  .pp-hero-overlay{
+    -webkit-backdrop-filter:blur(8px) saturate(100%);
+    backdrop-filter:blur(8px) saturate(100%);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .pp-hero-bg{ display:none; }
+}

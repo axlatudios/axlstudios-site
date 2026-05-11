@@ -1,0 +1,121 @@
+/* =========================================================
+   AXL Studios — main.css
+========================================================= */
+
+:root{
+  --axl-pink-300:#F288B7;
+  --axl-pink-500:#F05FA0;
+  --axl-pink-600:#EE237B;
+  --axl-purple-500:#935DA7;
+  --axl-bg-900:#151415;
+  --axl-text-100:#FAFAFB;
+  --axl-text-400:#A9A8A8;
+
+  --axl-text:#FAFAFB;
+  --axl-accent:#F288B7;
+  --axl-outline:#F287B7;
+  --axl-divider:rgba(255,255,255,.18);
+
+  --container-pad:clamp(16px,4vw,80px);
+  --axl-maxw:1280px;
+  --axl-form-max:1750px;
+  --nav-h:clamp(56px,8vw,96px);
+
+  --glass-blur:10px;
+  --glass-sat:140%;
+  --glass-grad-top:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.06));
+  --glass-grad-spec-1:radial-gradient(90% 120% at 28% 8%,rgba(255,255,255,.38) 0%,rgba(255,255,255,0) 60%);
+  --glass-grad-spec-2:radial-gradient(120% 90% at 72% 120%,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 55%);
+}
+
+@font-face{
+  font-family:"Urbanist";
+  src:url("../fonts/Urbanist-VariableFont_wght.ttf") format("truetype");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Urbanist";
+  src:url("../fonts/Urbanist-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight:100 900;
+  font-style:italic;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Inter";
+  src:url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Inter";
+  src:url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight:100 900;
+  font-style:italic;
+  font-display:swap;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; overflow-x:clip; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  color:var(--axl-text-100);
+  font-family:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background:var(--axl-bg-900);
+  padding-left:max(0px,env(safe-area-inset-left));
+  padding-right:max(0px,env(safe-area-inset-right));
+}
+
+img{ max-width:100%; height:auto; }
+video{ max-width:100%; }
+:where(p,li){ overflow-wrap:anywhere; }
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:var(--axl-bg-900) url("../bgsticky.png") center/cover no-repeat;
+}
+
+.pp-wrapper{
+  width:100%;
+  max-width:none;
+  margin:0;
+  position:relative;
+  background:transparent;
+}
+
+.pp-story,
+.pp-services,
+.pp-projects,
+.pp-team,
+.pp-toolkit,
+.pp-faq,
+.pp-contact-section,
+.axl-footer{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 900px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
+
+@media (min-width:1920px){
+  :root{
+    --container-pad:140px;
+    --axl-form-max:1200px;
+    --nav-h:96px;
+  }
+}
