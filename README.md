@@ -3,8 +3,19 @@
 ## Struttura attuale
 
 - `index.html`: shell della pagina e contenuto semantico.
-- `styles.css`: stylesheet globale attuale, ancora monolitico.
 - `assets/js/main.js`: comportamento client-side della pagina.
+- `assets/css/main.css`: token, font, reset, regole globali e fondamenta condivise.
+- `assets/css/layout.css`: wrapper, navbar, shell di layout e regole trasversali di impaginazione.
+- `assets/css/components.css`: componenti riusabili come CTA, bottoni, select custom e fallback condivisi.
+- `assets/css/sections/hero.css`: hero.
+- `assets/css/sections/about.css`: storytelling/about.
+- `assets/css/sections/services.css`: servizi.
+- `assets/css/sections/projects.css`: progetti.
+- `assets/css/sections/team.css`: team.
+- `assets/css/sections/toolkit.css`: toolkit.
+- `assets/css/sections/faq.css`: FAQ.
+- `assets/css/sections/contact.css`: contatti.
+- `assets/css/sections/footer.css`: footer.
 - `assets/fonts/`: font locali.
 - `assets/icons/`: icone e favicon.
 - `assets/`: media statici condivisi.
@@ -162,4 +173,9 @@ Quando aggiungi una regola CSS, la domanda corretta e`:
 - e` un componente riusabile? allora `components.css`
 - e` legata a una sola sezione? allora nel file della sezione
 
-Questa e` la divisione da seguire quando verra` smontato l'attuale `styles.css`.
+Questa e` la divisione attualmente in uso nel progetto.
+
+## Note operative
+
+- Il vecchio `styles.css` monolitico e` stato rimosso.
+- Se aggiungi una nuova regola, non creare un nuovo file senza motivo: prima valuta se appartiene a `main.css`, `layout.css`, `components.css` o a una sezione gia` esistente.

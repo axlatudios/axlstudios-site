@@ -1,0 +1,430 @@
+/* =========================================================
+   AXL Studios — contact.css
+========================================================= */
+
+.pp-contact-section{
+  width:100%;
+  margin:0 auto;
+  padding:clamp(72px,8vw,120px) 0;
+  background:transparent;
+  position:relative;
+  isolation:isolate;
+}
+
+.pp-contact-section .pp-contact-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-wrap:nowrap;
+  gap:clamp(40px,6vw,100px);
+  padding:0 var(--container-pad) clamp(40px,6vw,80px);
+}
+.pp-contact-section .pp-contact-title{
+  flex-shrink:0;
+  margin:0;
+  font-family:"Urbanist";
+  font-weight:600;
+  font-size:clamp(72px,12vw,208px);
+  line-height:.95;
+  color:#fff;
+  white-space:nowrap;
+}
+.pp-contact-section .pp-contact-desc{
+  flex:1;
+  margin:0;
+  font-family:"Urbanist";
+  font-weight:600;
+  font-size:clamp(16px,2.2vw,28px);
+  line-height:1.25;
+  color:#fff;
+  max-width:750px;
+}
+.pp-contact-section .pp-contact-desc em{
+  font-style:italic;
+  font-weight:600;
+}
+@media (max-width:980px){
+  .pp-contact-section .pp-contact-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:24px;
+  }
+  .pp-contact-section .pp-contact-title{ white-space:normal; }
+}
+
+.pp-contact-section .pp-contact-toprow{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  gap:clamp(24px,3vw,40px);
+  width:min(100%,var(--axl-form-max));
+  margin-inline:auto;
+  padding:0 0 clamp(40px,5vw,80px);
+}
+.pp-contact-section .pp-contact-card{
+  flex:1 1 320px;
+  min-width:280px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:clamp(20px,2.6vw,32px);
+  border-radius:16px;
+  background:rgba(255,255,255,0.06);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border:1px solid rgba(255,255,255,0.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 8px 28px rgba(0,0,0,0.32);
+  color:#FAFAFB;
+  text-decoration:none;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.pp-contact-section .pp-contact-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--axl-pink-500);
+  box-shadow:0 8px 36px rgba(238,35,123,.22);
+}
+.pp-contact-section .pp-card-ic{
+  font-size:clamp(24px,3vw,32px);
+  line-height:1;
+}
+.pp-contact-section .pp-card-label{
+  font-family:"Urbanist";
+  font-weight:700;
+  font-size:clamp(16px,1.4vw,20px);
+  color:var(--axl-pink-300);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.pp-contact-section .pp-card-val{
+  font-family:"Inter";
+  font-weight:500;
+  font-size:clamp(15px,1.6vw,18px);
+  color:#FAFAFB;
+}
+.pp-contact-section .pp-card-social{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:6px;
+}
+.pp-contact-section .pp-social-btn{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  font-family:"Urbanist";
+  font-weight:700;
+  font-size:15px;
+  border-radius:50%;
+  color:#FAFAFB;
+  text-decoration:none;
+  border:1px solid rgba(250,250,251,.25);
+  background:rgba(255,255,255,0.06);
+  transition:transform .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.pp-contact-section .pp-social-btn:hover{
+  transform:translateY(-2px);
+  border-color:var(--axl-pink-500);
+  background:rgba(255,255,255,0.12);
+}
+.pp-contact-section .pp-social-btn:focus-visible{
+  outline:2px solid var(--axl-pink-500);
+  outline-offset:4px;
+}
+
+.pp-contact-section .pp-contact-body{
+  padding:0 var(--container-pad);
+}
+.pp-contact-section .pp-form{
+  width:100%;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(16px,2.4vw,28px);
+  padding:clamp(20px,3vw,32px);
+  border-radius:16px;
+  background:rgba(255,255,255,0.06);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border:1px solid rgba(255,255,255,0.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 8px 28px rgba(0,0,0,0.32);
+}
+.pp-contact-section .pp-field{
+  display:flex;
+  flex-direction:column;
+}
+.pp-contact-section .pp-field--full{
+  grid-column:1 / -1;
+}
+.pp-contact-section .pp-label{
+  margin:0 0 6px;
+  font-family:"Urbanist";
+  font-weight:700;
+  letter-spacing:.2px;
+  font-size:14px;
+  line-height:1.2;
+  color:#FAFAFB;
+  opacity:.95;
+}
+.pp-contact-section .pp-input,
+.pp-contact-section .pp-textarea,
+.pp-contact-section .pp-select{
+  width:100%;
+  min-height:44px;
+  padding:10px 12px;
+  border-radius:10px;
+  font:400 15px/1.45 "Inter";
+  color:#FAFAFB;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(250,250,251,0.22);
+  outline:none;
+  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
+}
+.pp-contact-section .pp-input::placeholder,
+.pp-contact-section .pp-textarea::placeholder{
+  color:rgba(250,250,251,.55);
+}
+.pp-contact-section .pp-textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.pp-contact-section .pp-field:has(input[required]) > .pp-label::after,
+.pp-contact-section .pp-field:has(textarea[required]) > .pp-label::after,
+.pp-contact-section .pp-field:has(select[required]) > .pp-label::after{
+  content:" *";
+  color:var(--axl-pink-600);
+  font-weight:800;
+}
+
+.pp-contact-section .pp-input:focus,
+.pp-contact-section .pp-textarea:focus,
+.pp-contact-section .pp-select:focus{
+  border-color:var(--axl-pink-500);
+  box-shadow:0 0 0 2px rgba(238,35,123,.18);
+}
+.pp-contact-section .pp-field.is-error .pp-input,
+.pp-contact-section .pp-field.is-error .pp-textarea,
+.pp-contact-section .pp-field.is-error .pp-select{
+  border-color:#FF6B6B;
+  box-shadow:0 0 0 2px rgba(255,107,107,.18);
+}
+
+.pp-contact-section .pp-form-foot{
+  grid-column:1 / -1;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  row-gap:10px;
+  margin-top:4px;
+}
+.pp-contact-section .pp-submit.pp-btn{
+  padding-left:56px;
+}
+
+.pp-contact-section .pp-form-banner{
+  grid-column:1 / -1;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  font:600 14px/1.35 "Inter";
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.06);
+}
+.pp-contact-section .pp-form-banner--ok{
+  border-color:rgba(56,255,148,.35);
+  box-shadow:0 0 0 2px rgba(56,255,148,.14);
+}
+.pp-contact-section .pp-form-banner--err{
+  border-color:rgba(255,107,107,.55);
+  box-shadow:0 0 0 2px rgba(255,107,107,.14);
+}
+
+.pp-contact-section .pp-field--float{
+  position:relative;
+}
+.pp-contact-section .pp-field--float .pp-label{
+  position:absolute;
+  top:10px;
+  left:12px;
+  margin:0;
+  pointer-events:none;
+  opacity:.80;
+  transition:transform .15s ease,font-size .15s ease,opacity .15s ease,top .15s ease;
+}
+.pp-contact-section .pp-field--float :is(.pp-input,.pp-textarea,.pp-select){
+  padding-top:22px;
+}
+.pp-contact-section .pp-field--float :is(.pp-input,.pp-textarea,.pp-select):focus + .pp-label,
+.pp-contact-section .pp-field--float :is(.pp-input,.pp-textarea):not(:placeholder-shown) + .pp-label{
+  top:6px;
+  font-size:11px;
+  opacity:.95;
+}
+
+.pp-contact-section .pp-selectwrap{
+  position:relative;
+}
+.pp-contact-section .pp-select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  color:#FAFAFB;
+  background:#1B171C;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;
+  padding:12px 44px 12px 14px;
+  line-height:1.4;
+}
+.pp-contact-section .pp-select option{
+  color:#FAFAFB;
+  background:#1B171C;
+}
+.pp-contact-section .pp-select option[value=""]{
+  color:rgba(250,250,251,.65);
+}
+.pp-contact-section .pp-selectwrap::after{
+  content:"";
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%) rotate(45deg);
+  width:8px;
+  height:8px;
+  border-right:2px solid #FAFAFB;
+  border-bottom:2px solid #FAFAFB;
+  opacity:.9;
+  pointer-events:none;
+}
+.pp-contact-section .pp-select:focus{
+  border-color:#F288B7;
+  box-shadow:0 0 0 4px rgba(242,136,183,.18);
+  outline:none;
+}
+
+#axlContactForm.pp-form{
+  width:min(100%,var(--axl-form-max));
+  margin-inline:auto;
+  gap:16px;
+  margin-top:clamp(-32px,-32px,-32px);
+}
+#axlContactForm .pp-field--full,
+#axlContactForm .pp-form-foot,
+#axlContactForm .pp-form-msg{
+  grid-column:1 / -1;
+}
+
+@media (max-width:1280px){
+  .pp-contact-section .pp-contact-toprow,
+  #axlContactForm.pp-form{
+    width:min(100%,980px);
+  }
+}
+@media (max-width:900px){
+  .pp-contact-section .pp-contact-toprow,
+  .pp-contact-section .pp-form,
+  #axlContactForm.pp-form{
+    grid-template-columns:1fr;
+    max-width:100%;
+    width:100%;
+  }
+}
+@media (max-width:768px){
+  .pp-contact-section .pp-contact-toprow{
+    flex-direction:column;
+  }
+  .pp-contact-section .pp-contact-card{ width:100%; }
+}
+@media (max-width:560px){
+  .pp-contact-section .pp-contact-desc{ font-size:clamp(14px,4.2vw,18px); }
+}
+
+.pp-contact .pp-form{
+  max-width:980px;
+  margin-left:auto;
+  margin-right:auto;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  padding:20px 20px;
+}
+@media (max-width:1280px){
+  .pp-contact .pp-form{
+    max-width:900px;
+    gap:14px;
+    padding:18px;
+  }
+}
+.pp-contact .pp-label{
+  display:block;
+  margin-bottom:6px;
+  font-family:"Urbanist";
+  font-weight:700;
+  letter-spacing:.2px;
+  color:#FAFAFB;
+  opacity:.95;
+  font-size:14px;
+  line-height:1.2;
+}
+.pp-contact .pp-field:has(input[required]) > .pp-label::after,
+.pp-contact .pp-field:has(textarea[required]) > .pp-label::after,
+.pp-contact .pp-field:has(select[required]) > .pp-label::after{
+  content:" *";
+  color:var(--axl-pink-600);
+  font-weight:800;
+}
+.pp-contact .pp-input,
+.pp-contact .pp-textarea,
+.pp-contact .pp-select{
+  min-height:44px;
+  padding:10px 12px;
+  font-size:15px;
+  line-height:1.4;
+}
+.pp-contact .pp-textarea{
+  min-height:120px;
+  resize:vertical;
+}
+.pp-contact .pp-selectwrap{ min-height:44px; }
+.pp-contact .pp-select{ padding-right:44px; }
+.pp-contact .pp-select-caret{
+  width:24px;
+  height:24px;
+  right:10px;
+}
+.pp-contact .pp-field--full{ grid-column:1 / -1; }
+.pp-contact .pp-input:focus,
+.pp-contact .pp-textarea:focus,
+.pp-contact .pp-select:focus{
+  border-color:var(--axl-pink-500);
+  box-shadow:0 0 0 2px rgba(238,35,123,.18);
+}
+.pp-contact .pp-form-foot{
+  gap:10px;
+  row-gap:10px;
+}
+.pp-contact .pp-help{
+  margin-top:6px;
+  font:500 12px/1.3 "Inter";
+  color:#A9A8A8;
+}
+.pp-contact .pp-error{
+  margin-top:6px;
+  font:600 12px/1.3 "Inter";
+  color:#FF6B6B;
+}
+.pp-contact .pp-field.is-error .pp-input,
+.pp-contact .pp-field.is-error .pp-textarea,
+.pp-contact .pp-field.is-error .pp-select{
+  border-color:#FF6B6B;
+  box-shadow:0 0 0 2px rgba(255,107,107,.18);
+}
+@media (max-width:900px){
+  .pp-contact .pp-form{
+    grid-template-columns:1fr;
+    max-width:100%;
+  }
+}

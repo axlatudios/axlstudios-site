@@ -1,0 +1,160 @@
+/* =========================================================
+   AXL Studios — toolkit.css
+========================================================= */
+
+.pp-toolkit{
+  width:100%;
+  margin:0 auto;
+  padding:clamp(72px,8vw,140px) 0;
+  background:transparent;
+}
+
+.pp-toolkit-head{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:clamp(40px,6vw,120px);
+  padding:0 var(--container-pad) clamp(64px,8vw,120px);
+  align-items:center;
+}
+@media (max-width:980px){
+  .pp-toolkit-head{
+    grid-template-columns:1fr;
+  }
+}
+.pp-toolkit-title{
+  margin:0;
+  font-family:"Urbanist";
+  font-weight:600;
+  font-size:clamp(120px,18vw,260px);
+  line-height:.9;
+  color:#fff;
+}
+.pp-toolkit-text p{
+  margin:0 0 20px;
+  font-family:"Inter";
+  font-size:clamp(16px,2.2vw,26px);
+  color:rgba(255,255,255,0.92);
+  line-height:1.4;
+}
+.pp-toolkit-text em{
+  font-style:italic;
+  font-weight:600;
+  color:#fff;
+}
+
+.pp-toolkit-block{
+  padding:clamp(48px,5vw,90px) var(--container-pad);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(32px,6vw,120px);
+  align-items:center;
+}
+.pp-toolkit-block-title{
+  margin:0 0 9px;
+  font-family:"Urbanist";
+  font-weight:700;
+  font-size:clamp(24px,3vw,42px);
+  line-height:1.2;
+  color:#fff;
+}
+.pp-toolkit-copy p{
+  margin:0;
+  color:rgba(255,255,255,0.92);
+  font-family:"Inter";
+  font-weight:400;
+  font-size:clamp(14px,1.6vw,20px);
+  line-height:1.6;
+}
+
+.pp-toolkit-icons{
+  --pp-icon-size:clamp(36px,7vw,80px);
+  --pp-icon-gap-x:clamp(20px,3.5vw,25px);
+  --pp-icon-gap-y:clamp(18px,2.5vw,64px);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(var(--pp-icon-size),1fr));
+  gap:var(--pp-icon-gap-y) var(--pp-icon-gap-x);
+  align-items:center;
+  justify-items:start;
+}
+.pp-toolkit-icons img{
+  width:var(--pp-icon-size);
+  height:var(--pp-icon-size);
+  object-fit:contain;
+  display:block;
+  filter:brightness(1) contrast(1);
+  opacity:.92;
+  transition:transform .18s ease,opacity .18s ease;
+}
+.pp-toolkit-icons img:hover{
+  transform:translateY(-4px) scale(1.04);
+  opacity:1;
+}
+
+.pp-toolkit-cta{
+  grid-column:1 / -1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:clamp(18px,3.5vw,40px);
+}
+.pp-toolkit-cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  padding:12px 18px 12px 28px;
+  border-radius:40px;
+  text-decoration:none;
+  font-family:"Urbanist";
+  font-weight:800;
+  font-size:clamp(12px,1.2vw,16px);
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  color:#FAFAFB;
+  background:rgba(255,255,255,0.06);
+  -webkit-backdrop-filter:blur(12px) saturate(120%);
+  backdrop-filter:blur(12px) saturate(120%);
+  border:2px solid rgba(242,136,183,0.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.10),0 10px 24px rgba(238,35,123,0.12);
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease;
+}
+.pp-toolkit-cta-btn--center{
+  display:flex;
+  width:max-content;
+  margin:24px auto 0;
+  padding:8px 39px 8px 70px;
+  gap:10px;
+}
+.pp-toolkit-cta-btn:hover{
+  transform:translateY(-2px);
+  border-color:var(--axl-pink-300);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 32px rgba(238,35,123,0.18);
+}
+.pp-toolkit-cta-btn:active,
+.pp-toolkit-cta-btn.is-pressed{
+  color:var(--axl-pink-600);
+  transform:translateY(0) scale(.98);
+}
+.pp-toolkit-cta-badge{
+  width:36px;
+  height:36px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.12);
+  border:2px solid rgba(250,250,251,0.55);
+}
+.pp-toolkit-cta-btn .pp-toolkit-cta-badge svg{
+  transition:transform .1s ease;
+}
+.pp-toolkit-cta-btn:active .pp-toolkit-cta-badge,
+.pp-toolkit-cta-btn.is-pressed .pp-toolkit-cta-badge{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(250,250,251,.65);
+  transform:translateY(0) scale(.94);
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.18),inset 0 -2px 6px rgba(255,255,255,.08),0 4px 10px rgba(0,0,0,.20);
+}
+.pp-toolkit-cta-btn:active .pp-toolkit-cta-badge svg,
+.pp-toolkit-cta-btn.is-pressed .pp-toolkit-cta-badge svg{
+  transform:translateY(1px);
+}
