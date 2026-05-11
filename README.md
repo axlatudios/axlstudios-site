@@ -3,7 +3,14 @@
 ## Struttura attuale
 
 - `index.html`: shell della pagina e contenuto semantico.
-- `assets/js/main.js`: comportamento client-side della pagina.
+- `assets/js/main.js`: entrypoint JS che inizializza tutti i moduli della pagina.
+- `assets/js/modules/adaptive-videos.js`: gestione caricamento e stop dei video decorativi in base a viewport e reduced motion.
+- `assets/js/modules/services-track.js`: drag infinito della sezione servizi.
+- `assets/js/modules/mobile-menu.js`: stato e accessibilita` del menu mobile.
+- `assets/js/modules/faq.js`: apertura/chiusura FAQ e deep-linking hash.
+- `assets/js/modules/contact-form.js`: validazione base e stato del form contatti.
+- `assets/js/modules/selects.js`: select custom della form.
+- `assets/js/modules/home-logo.js`: comportamento del logo come link scroll verso home.
 - `assets/css/main.css`: token, font, reset, regole globali e fondamenta condivise.
 - `assets/css/layout.css`: wrapper, navbar, shell di layout e regole trasversali di impaginazione.
 - `assets/css/components.css`: componenti riusabili come CTA, bottoni, select custom e fallback condivisi.
@@ -23,6 +30,7 @@
 ## Convenzioni
 
 - Evitare script inline in `index.html`: nuova logica va in `assets/js/main.js`.
+- `assets/js/main.js` deve restare leggero: importa moduli e li inizializza, non deve tornare monolitico.
 - Evitare `style="..."` inline: creare classi riusabili nei file CSS dedicati.
 - I video decorativi devono restare opzionali: su mobile o con `prefers-reduced-motion` non vanno caricati.
 - Per CTA e pattern ripetuti, preferire classi modificatrici come `--center` o `--start`.
