@@ -1,4 +1,4 @@
-export function setupAdaptiveVideos({ prefersReducedMotion, isMobileViewport }) {
+export function setupAdaptiveVideos({ prefersReducedMotion }) {
   const videos = document.querySelectorAll(
     ".pp-hero-bg, .pp-services-bg-video, .pp-team-bg-video"
   );
@@ -34,7 +34,7 @@ export function setupAdaptiveVideos({ prefersReducedMotion, isMobileViewport }) 
   };
 
   const syncVideos = () => {
-    const shouldPause = prefersReducedMotion.matches || isMobileViewport.matches;
+    const shouldPause = prefersReducedMotion.matches;
 
     videos.forEach((video) => {
       if (!(video instanceof HTMLVideoElement)) {
@@ -56,5 +56,4 @@ export function setupAdaptiveVideos({ prefersReducedMotion, isMobileViewport }) 
 
   syncVideos();
   prefersReducedMotion.addEventListener("change", syncVideos);
-  isMobileViewport.addEventListener("change", syncVideos);
 }

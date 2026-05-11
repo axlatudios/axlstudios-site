@@ -245,10 +245,6 @@
   }
 }
 
-@media (max-width:768px){
-  .pp-team-bg-video{ display:none; }
-}
-
 @media (max-width:560px){
   .pp-team-photo{ height:260px; }
   .pp-team-desc{ font-size:clamp(14px,4.2vw,18px); }

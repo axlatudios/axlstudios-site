@@ -142,10 +142,6 @@
 }
 .pp-cta:hover .pp-arrow-down{ transform:translateY(3px); }
 
-@media (max-width:768px){
-  .pp-hero-bg{ display:none; }
-}
-
 @media (max-width:560px){
   .pp-hero{ min-height:480px; }
   .pp-hero-overlay{

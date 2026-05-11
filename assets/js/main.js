@@ -7,9 +7,8 @@ import { setupSelects } from "./modules/selects.js";
 import { setupHomeLogo } from "./modules/home-logo.js";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const isMobileViewport = window.matchMedia("(max-width: 768px)");
 
-setupAdaptiveVideos({ prefersReducedMotion, isMobileViewport });
+setupAdaptiveVideos({ prefersReducedMotion });
 setupServicesTrack();
 setupMobileMenu();
 setupFaq();
