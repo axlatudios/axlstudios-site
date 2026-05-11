@@ -30,28 +30,28 @@
 
 @font-face{
   font-family:"Urbanist";
-  src:url("../fonts/Urbanist-VariableFont_wght.ttf") format("truetype");
+  src:url("../fonts/Urbanist-VariableFont_wght.woff2") format("woff2"),url("../fonts/Urbanist-VariableFont_wght.ttf") format("truetype");
   font-weight:100 900;
   font-style:normal;
   font-display:swap;
 }
 @font-face{
   font-family:"Urbanist";
-  src:url("../fonts/Urbanist-Italic-VariableFont_wght.ttf") format("truetype");
+  src:url("../fonts/Urbanist-Italic-VariableFont_wght.woff2") format("woff2"),url("../fonts/Urbanist-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight:100 900;
   font-style:italic;
   font-display:swap;
 }
 @font-face{
   font-family:"Inter";
-  src:url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  src:url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2"),url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight:100 900;
   font-style:normal;
   font-display:swap;
 }
 @font-face{
   font-family:"Inter";
-  src:url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  src:url("../fonts/Inter-Italic-VariableFont_opsz,wght.woff2") format("woff2"),url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight:100 900;
   font-style:italic;
   font-display:swap;
@@ -80,7 +80,7 @@ body::before{
   inset:0;
   z-index:-1;
   pointer-events:none;
-  background:var(--axl-bg-900) url("../bgsticky.png") center/cover no-repeat;
+  background:var(--axl-bg-900) url("../bgsticky.webp") center/cover no-repeat;
 }
 
 .pp-wrapper{

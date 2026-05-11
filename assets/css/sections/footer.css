@@ -6,7 +6,7 @@
   position:relative;
   color:var(--axl-text);
   font-family:"Urbanist",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  background:url("../../bgfooter.png") center/cover no-repeat;
+  background:url("../../bgfooter.webp") center/cover no-repeat;
   overflow:hidden;
 }
 

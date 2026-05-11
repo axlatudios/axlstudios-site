@@ -51,7 +51,7 @@
   z-index:0;
   width:100%;
   height:clamp(560px,50vw,800px);
-  background:url("../../bgcard.png") center/cover no-repeat;
+  background:url("../../bgcard.webp") center/cover no-repeat;
 }
 .pp-services-bg-video{
   position:absolute;
@@ -62,6 +62,8 @@
   transform:rotate(180deg);
   pointer-events:none;
   z-index:1;
+  opacity:.9;
+  transition:opacity .32s ease;
 }
 .pp-services-strip::after{
   content:"";
@@ -165,6 +167,15 @@
   font-weight:400;
   font-size:clamp(14px,1.6vw,18px);
   line-height:1.6;
+}
+
+@media (max-width:768px){
+  .pp-services-strip::after{
+    background:rgba(0,0,0,0.08);
+    -webkit-backdrop-filter:blur(6px) saturate(105%);
+    backdrop-filter:blur(6px) saturate(105%);
+  }
+  .pp-services-bg-video{ opacity:1; }
 }
 
 @media (max-width:560px){
