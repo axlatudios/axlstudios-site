@@ -9,7 +9,7 @@
   width:100%;
   max-width:none;
   min-height:var(--nav-h);
-  padding:clamp(10px,2.8vw,40px) var(--container-pad);
+  padding:clamp(6px,1.2vw,12px) var(--container-pad) clamp(3px,0.6vw,6px);
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -37,10 +37,10 @@
 
 .pp-logo{
   position:relative;
-  width:120px;
-  height:49.28px;
-  -webkit-mask:url("../logo.svg") center/contain no-repeat;
-  mask:url("../logo.svg") center/contain no-repeat;
+  width:200px;
+  height:82px;
+  -webkit-mask:url("../Logo_Esteso_Bianco.svg") center/contain no-repeat;
+  mask:url("../Logo_Esteso_Bianco.svg") center/contain no-repeat;
   background:#FAFAFB;
   transition:background .22s ease,transform .18s ease,filter .22s ease;
   will-change:background,transform,filter;

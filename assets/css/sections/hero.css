@@ -75,7 +75,7 @@
   font-weight:800;
   line-height:1.1;
   display:inline-block;
-  font-size:clamp(38px,6vw,104px);
+  font-size:clamp(38px,7.1vw,164px);
 }
 .pp-title-axl{ color:var(--axl-pink-300); }
 .pp-title-where500{ font-weight:500; }
@@ -87,11 +87,18 @@
   color:#FAFAFB;
   font-size:clamp(16px,2vw,32px);
   font-family:"Urbanist";
-  font-weight:600;
+  font-weight:400;
   line-height:1.25;
-  margin:0;
-  max-width:32rem;
+  margin:0 auto;
+  max-width:65rem;
   text-wrap:pretty;
+}
+
+.pp-cta-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
 }
 
 .pp-cta{

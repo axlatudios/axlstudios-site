@@ -80,7 +80,7 @@ body::before{
   inset:0;
   z-index:-1;
   pointer-events:none;
-  background:var(--axl-bg-900) url("../bgsticky.webp") center/cover no-repeat;
+  background:var(--axl-bg-900) url("../bgsticky.png") center/cover no-repeat;
 }
 
 .pp-wrapper{
