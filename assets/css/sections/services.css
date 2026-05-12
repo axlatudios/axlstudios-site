@@ -2,11 +2,12 @@
    AXL Studios — services.css
 ========================================================= */
 
-.pp-services{
+#services.pp-services{
   width:100%;
   margin:0 auto;
   padding:clamp(72px,8vw,120px) 0;
   background:transparent;
+  zoom:0.77;
 }
 .pp-services-head{
   padding:0 var(--container-pad) clamp(40px,4vw,80px);
@@ -39,6 +40,7 @@
   font-size:clamp(18px,2.4vw,32px);
   line-height:1.2;
   text-wrap:pretty;
+  padding-top: 45px;
 }
 
 .pp-services-strip{
@@ -80,21 +82,44 @@
   position:absolute;
   inset:0;
   height:100%;
-  overflow:hidden;
+  overflow-x:auto;
+  overflow-y:hidden;
   cursor:grab;
-  touch-action:pan-y;
-  scroll-behavior:smooth;
+  touch-action:auto;
   z-index:3;
+  scrollbar-width:none;
 }
-.pp-services-viewport:active{ cursor:grabbing; }
+
+.pp-services-viewport--dragging{ cursor:grabbing; }
+
+.pp-services-viewport::-webkit-scrollbar{ display:none; }
 
 .pp-services-track{
-  position:absolute;
-  top:0;
-  left:0;
+  position:relative;
   height:100%;
   display:flex;
+  width:max-content;
   will-change:transform;
+}
+
+.pp-services-track--marquee{
+  animation:pp-services-marquee var(--services-marquee-duration,46s) linear infinite;
+}
+
+.pp-services-track--manual{
+  animation:none !important;
+  transform:none !important;
+}
+
+.pp-services-viewport:hover .pp-services-track--marquee,
+.pp-services-track--paused,
+.pp-services-track--user-paused{
+  animation-play-state:paused;
+}
+
+@keyframes pp-services-marquee{
+  from{ transform:translate3d(0,0,0); }
+  to{ transform:translate3d(-50%,0,0); }
 }
 
 .pp-service{
@@ -107,7 +132,8 @@
   position:relative;
   --card-w:clamp(280px,60vw,600px);
 }
-.pp-service + .pp-service::before{
+.pp-service + .pp-service::before,
+.pp-service.pp-service--loop-edge::before{
   content:"";
   position:absolute;
   top:5%;
@@ -194,6 +220,7 @@
 
 @media (prefers-reduced-motion:reduce){
   .pp-services-bg-video{ display:none; }
+  .pp-services-track--marquee{ animation:none; }
 }
 
 @media (min-width:1920px){

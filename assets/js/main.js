@@ -9,7 +9,7 @@ import { setupHomeLogo } from "./modules/home-logo.js";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 setupAdaptiveVideos({ prefersReducedMotion });
-setupServicesTrack();
+setupServicesTrack({ prefersReducedMotion });
 setupMobileMenu();
 setupFaq();
 setupContactForm();

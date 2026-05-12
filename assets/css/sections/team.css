@@ -8,6 +8,7 @@
   padding:clamp(72px,8vw,120px) 0;
   position:relative;
   overflow:hidden;
+  zoom:0.75;
 }
 .pp-team::before,
 .pp-team::after{ content:none !important; }
@@ -42,6 +43,7 @@
 }
 
 @media (max-width:1200px){
+  .pp-team{ zoom:0.86; }
   .pp-team-head{
     flex-direction:column;
     align-items:flex-start;
@@ -336,6 +338,7 @@
 
 @media (max-width:560px){
   .pp-team{
+    zoom:1;
     padding:64px 0 96px;
   }
   .pp-team-head{

@@ -1,140 +1,287 @@
-export function setupServicesTrack() {
+export function setupServicesTrack({ prefersReducedMotion } = {}) {
   const track = document.getElementById("servicesTrack");
   if (!track || !track.parentElement) {
     return;
   }
 
   const viewport = track.parentElement;
-  let cards = Array.from(track.children);
-  const baseCount = cards.length;
 
-  if (!baseCount) {
+  if (track.dataset.marqueeReady === "true") {
     return;
   }
 
-  function cardWidth() {
-    return cards[0].getBoundingClientRect().width;
+  const originalCards = Array.from(track.children);
+  if (!originalCards.length) {
+    return;
   }
 
-  function populateClones() {
-    const fragStart = document.createDocumentFragment();
-    const fragEnd = document.createDocumentFragment();
+  track.dataset.marqueeReady = "true";
 
-    cards.forEach((card) => fragEnd.appendChild(card.cloneNode(true)));
-    [...cards]
-      .reverse()
-      .forEach((card) => fragStart.appendChild(card.cloneNode(true)));
+  const reducedMotionQuery =
+    prefersReducedMotion || window.matchMedia("(prefers-reduced-motion: reduce)");
+  let loopWidth = 0;
+  let isAdjustingScroll = false;
+  let isManualMode = false;
+  let isDragging = false;
+  let lastPointerX = 0;
+  let draggedDistance = 0;
+  let suppressClick = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isTouchTracking = false;
+  const dragClickThreshold = 6;
 
-    track.insertBefore(fragStart, track.firstChild);
-    track.appendChild(fragEnd);
-    cards = Array.from(track.children);
-  }
+  const cloneFragment = document.createDocumentFragment();
+  originalCards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("a, button, input, textarea, select").forEach((node) => {
+      node.setAttribute("tabindex", "-1");
+    });
+    cloneFragment.appendChild(clone);
+  });
 
-  populateClones();
+  track.appendChild(cloneFragment);
+  track.style.transform = "";
+  track.classList.add("pp-services-track--marquee");
 
-  let startX = 0;
-  let startY = 0;
-  let currentX = 0;
-  let previousX = 0;
-  let isPointerDown = false;
-  let isDraggingHorizontally = false;
-  let translate = 0;
-  let total = 0;
-  let leftLimit = 0;
-  let rightLimit = 0;
-  let resizeFrame;
-  const dragThreshold = 12;
+  const updateLoopWidth = () => {
+    const startA = track.children[0];
+    const startB = track.children[originalCards.length];
 
-  function recalc() {
-    const width = cardWidth();
-    total = width * baseCount * 3;
-    leftLimit = -total + width * baseCount;
-    rightLimit = -(width * baseCount);
-    translate = rightLimit;
-    track.style.transform = `translateX(${translate}px)`;
-  }
-
-  function wrap() {
-    const width = cardWidth() * baseCount;
-    if (translate < leftLimit) {
-      translate += width;
-    }
-    if (translate > rightLimit) {
-      translate -= width;
-    }
-  }
-
-  function onPointerDown(event) {
-    isPointerDown = true;
-    document.body.style.userSelect = "none";
-    const point = event.touches ? event.touches[0] : event;
-    startX = point.clientX;
-    startY = point.clientY;
-    previousX = startX;
-    isDraggingHorizontally = false;
-  }
-
-  function onPointerMove(event) {
-    if (!isPointerDown) {
+    if (!startA || !startB) {
+      loopWidth = 0;
       return;
     }
 
-    const point = event.touches ? event.touches[0] : event;
-    const deltaX = point.clientX - startX;
-    const deltaY = point.clientY - startY;
+    const rectA = startA.getBoundingClientRect();
+    const rectB = startB.getBoundingClientRect();
+    loopWidth = Math.max(0, rectB.left - rectA.left);
+  };
 
-    if (event.touches && !isDraggingHorizontally) {
-      const distanceX = Math.abs(deltaX);
-      const distanceY = Math.abs(deltaY);
-
-      if (distanceX < dragThreshold && distanceY < dragThreshold) {
-        return;
-      }
-
-      if (distanceY > distanceX) {
-        onPointerUp();
-        return;
-      }
-
-      isDraggingHorizontally = true;
-      viewport.classList.add("dragging");
+  const wrapViewportScroll = () => {
+    if (!isManualMode || !loopWidth || isAdjustingScroll) {
+      return;
     }
 
-    if (!event.touches && !isDraggingHorizontally) {
-      isDraggingHorizontally = true;
-      viewport.classList.add("dragging");
+    let targetScrollLeft = null;
+
+    if (viewport.scrollLeft <= 1) {
+      targetScrollLeft = viewport.scrollLeft + loopWidth;
     }
 
-    currentX = point.clientX;
-    translate += currentX - previousX;
-    previousX = currentX;
-    wrap();
-    track.style.transform = `translateX(${translate}px)`;
-
-    if (isDraggingHorizontally) {
-      event.preventDefault();
+    if (viewport.scrollLeft >= loopWidth) {
+      targetScrollLeft = viewport.scrollLeft - loopWidth;
     }
-  }
 
-  function onPointerUp() {
-    isPointerDown = false;
-    isDraggingHorizontally = false;
-    viewport.classList.remove("dragging");
+    if (targetScrollLeft !== null) {
+      isAdjustingScroll = true;
+      viewport.scrollLeft = targetScrollLeft;
+      isAdjustingScroll = false;
+    }
+  };
+
+  const applyReducedMotionState = () => {
+    track.classList.toggle("pp-services-track--paused", reducedMotionQuery.matches);
+  };
+
+  applyReducedMotionState();
+  reducedMotionQuery.addEventListener?.("change", applyReducedMotionState);
+  updateLoopWidth();
+  viewport.scrollLeft = 0;
+
+  const setUserPaused = (paused) => {
+    track.classList.toggle("pp-services-track--user-paused", paused);
+  };
+
+  const setManualMode = (enabled) => {
+    isManualMode = enabled;
+    track.classList.toggle("pp-services-track--manual", enabled);
+
+    if (!enabled) {
+      viewport.scrollLeft = 0;
+      return;
+    }
+
+    if (loopWidth) {
+      viewport.scrollLeft = Math.max(1, loopWidth * 0.5);
+    }
+  };
+
+  const startDrag = (clientX) => {
+    setManualMode(true);
+    isDragging = true;
+    lastPointerX = clientX;
+    draggedDistance = 0;
+    viewport.classList.add("pp-services-viewport--dragging");
+    document.body.style.userSelect = "none";
+    setUserPaused(true);
+  };
+
+  const moveDrag = (clientX, event) => {
+    if (!isDragging) {
+      return;
+    }
+
+    const deltaX = clientX - lastPointerX;
+    lastPointerX = clientX;
+    draggedDistance += Math.abs(deltaX);
+    viewport.scrollLeft -= deltaX;
+    wrapViewportScroll();
+    event.preventDefault();
+  };
+
+  const endDrag = () => {
+    if (!isDragging) {
+      return;
+    }
+
+    isDragging = false;
+    viewport.classList.remove("pp-services-viewport--dragging");
     document.body.style.userSelect = "";
-  }
 
-  recalc();
+    if (!isManualMode && !reducedMotionQuery.matches) {
+      setUserPaused(false);
+    }
 
-  viewport.addEventListener("mousedown", onPointerDown);
-  viewport.addEventListener("mousemove", onPointerMove);
-  window.addEventListener("mouseup", onPointerUp);
-  viewport.addEventListener("touchstart", onPointerDown, { passive: false });
-  viewport.addEventListener("touchmove", onPointerMove, { passive: false });
-  window.addEventListener("touchend", onPointerUp);
-  viewport.addEventListener("dragstart", (event) => event.preventDefault());
+    if (draggedDistance > dragClickThreshold) {
+      suppressClick = true;
+    }
+  };
+
+  viewport.addEventListener("mousedown", (event) => {
+    if (event.button !== 0) {
+      return;
+    }
+
+    startDrag(event.clientX);
+  });
+
+  window.addEventListener("mousemove", (event) => {
+    moveDrag(event.clientX, event);
+  });
+
+  window.addEventListener("mouseup", endDrag);
+
+  viewport.addEventListener(
+    "touchstart",
+    (event) => {
+      const touch = event.touches[0];
+      if (!touch) {
+        return;
+      }
+
+      isTouchTracking = true;
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    },
+    { passive: true }
+  );
+
+  viewport.addEventListener(
+    "touchmove",
+    (event) => {
+      const touch = event.touches[0];
+      if (!touch) {
+        return;
+      }
+
+      if (!isDragging && isTouchTracking) {
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+        const absX = Math.abs(deltaX);
+        const absY = Math.abs(deltaY);
+
+        if (absX < dragClickThreshold && absY < dragClickThreshold) {
+          return;
+        }
+
+        if (absX <= absY) {
+          isTouchTracking = false;
+          return;
+        }
+
+        startDrag(touch.clientX);
+      }
+
+      if (!isDragging) {
+        return;
+      }
+
+      isTouchTracking = false;
+
+      moveDrag(touch.clientX, event);
+    },
+    { passive: false }
+  );
+
+  window.addEventListener("touchend", () => {
+    isTouchTracking = false;
+    endDrag();
+  });
+
+  window.addEventListener("touchcancel", () => {
+    isTouchTracking = false;
+    endDrag();
+  });
+
+  viewport.addEventListener(
+    "click",
+    (event) => {
+      if (!suppressClick) {
+        return;
+      }
+
+      suppressClick = false;
+      event.preventDefault();
+      event.stopPropagation();
+    },
+    true
+  );
+
+  viewport.addEventListener(
+    "wheel",
+    (event) => {
+      const absX = Math.abs(event.deltaX);
+      const absY = Math.abs(event.deltaY);
+
+      if (!absX || absX <= absY) {
+        return;
+      }
+
+      viewport.scrollLeft += event.deltaX;
+      wrapViewportScroll();
+      event.preventDefault();
+    },
+    { passive: false }
+  );
+
+  viewport.addEventListener(
+    "scroll",
+    () => {
+      wrapViewportScroll();
+    },
+    { passive: true }
+  );
+
+  viewport.addEventListener("mouseenter", () => {
+    setManualMode(true);
+    setUserPaused(true);
+  });
+
+  viewport.addEventListener("mouseleave", () => {
+    if (isDragging) {
+      return;
+    }
+
+    setManualMode(false);
+    if (!reducedMotionQuery.matches) {
+      setUserPaused(false);
+    }
+  });
 
   window.addEventListener("resize", () => {
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(recalc);
+    updateLoopWidth();
+    wrapViewportScroll();
   });
 }

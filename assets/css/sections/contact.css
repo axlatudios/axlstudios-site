@@ -9,6 +9,7 @@
   background:transparent;
   position:relative;
   isolation:isolate;
+   zoom:0.8;
 }
 
 .pp-contact-section .pp-contact-head{
