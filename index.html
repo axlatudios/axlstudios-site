@@ -376,59 +376,42 @@
             </p>
         </div>
 
-    <div class="pp-team-grid">
-
-    <!-- ✅ Video come background dell'intera sezione TEAM -->
-    <video class="pp-team-bg-video" autoplay muted loop playsinline webkit-playsinline preload="none" aria-hidden="true" poster="./assets/bgcard.webp" data-video-src="./assets/gifAxL-ios.mp4"><source src="./assets/gifAxL-ios.mp4" type="video/mp4"></video>
-
-    <!-- Colonna 1 -->
-      <article class="pp-team-col">
-          <div class="pp-team-photo" data-initials="LC" aria-label="Placeholder ritratto Lorenzo"></div>
-          <div class="pp-team-stack">
-          <div class="pp-team-copy">
-              <h3 class="pp-team-name">Lorenzo</h3>
-              <p class="pp-team-role">Full-Stack Developer</p>
-              <p class="pp-team-bio">Sviluppa l’infrastruttura tecnica dei progetti, 
-                trasformando concept e design in prodotti digitali veloci, sicuri e scalabili. 
-                occupa di frontend e backend con un approccio ingegneristico: struttura l’architettura, 
-                ottimizza le performance, gestisce integrazioni API, database e logiche applicative complesse. Ogni riga di codice è scritta per essere pulita, 
-                manutenibile e allineata alle best practice del settore, garantendo risultati solidi e pronti a crescere nel tempo.
-              </p>
+    <div class="pp-team-grid" role="list" aria-label="Membri del team">
+      <article class="pp-team-card pp-team-card--lorenzo" role="listitem">
+        <div class="pp-team-card-inner">
+          <p class="pp-team-card-role">Full-Stack Developer</p>
+          <div class="pp-team-card-copy">
+            <h3 class="pp-team-card-name">Lorenzo</h3>
+            <p class="pp-team-card-bio">
+              Sviluppa l’infrastruttura tecnica dei progetti, trasformando concept e design in prodotti digitali veloci, sicuri e scalabili. Si occupa di frontend e backend, strutturando architettura, performance e integrazioni complesse.
+            </p>
           </div>
-          </div>
+        </div>
       </article>
 
-    <!-- Colonna 2 -->
-    <article class="pp-team-col">
-        <div class="pp-team-photo" data-initials="AD" aria-label="Placeholder ritratto Alfredo"></div>
-        <div class="pp-team-stack">
-        <div class="pp-team-copy">
-            <h3 class="pp-team-name">Alfredo</h3>
-            <p class="pp-team-role">Graphic &amp; UI/UX Designer</p>
-            <p class="pp-team-bio">Guida la direzione visiva e funzionale di ogni progetto, combinando ricerca, estetica e logica progettuale. 
-              Studia bisogni, flussi e comportamenti dell’utente per creare esperienze intuitive, coerenti e piacevoli da utilizzare. 
-              Dalla struttura UX alla UI finale, cura tipografia, layout, ritmo visivo e micro-interazioni con un approccio artigianale alla qualità. 
-              Il suo obiettivo è trasformare idee e identità in interfacce moderne, chiare e tecnicamente solide, dove estetica e usabilità lavorano insieme.</p>
-        </div>
-        </div>
-    </article>
-
-    <!-- Colonna 3 -->
-    <article class="pp-team-col">
-        <div class="pp-team-photo" data-initials="FA" aria-label="Placeholder ritratto Fabio"></div>
-        <div class="pp-team-stack">
-        <div class="pp-team-copy">
-            <h3 class="pp-team-name">Fabio</h3>
-            <p class="pp-team-role">Social &amp; Digital Strategist</p>
-            <p class="pp-team-bio">
-        Sviluppa strategie trasformando contenuti, dati e creatività in una comunicazione chiara, efficace e riconoscibile.
-        Definisce identità, tone of voice e narrativa dei brand, costruendo piani editoriali fondati su analisi, obiettivi e posizionamento.
-        Si occupa di community building, performance dei contenuti, ottimizzazione dei canali social e campagne mirate, integrando storytelling, 
-        dati e strategia per generare risultati misurabili e duraturi.
+      <article class="pp-team-card pp-team-card--alfredo" role="listitem">
+        <div class="pp-team-card-inner">
+          <p class="pp-team-card-role">Graphic &amp; UI/UX Designer</p>
+          <div class="pp-team-card-copy">
+            <h3 class="pp-team-card-name">Alfredo</h3>
+            <p class="pp-team-card-bio">
+              Guida la UI/UX design di ogni progetto, traducendo ricerca e logica in interfacce intuitive e visivamente curate. Cura ogni dettaglio, dalla struttura UX alla UI finale, dove estetica e usabilità lavorano sempre insieme.
             </p>
+          </div>
         </div>
+      </article>
+
+      <article class="pp-team-card pp-team-card--fabio" role="listitem">
+        <div class="pp-team-card-inner">
+          <p class="pp-team-card-role">Social &amp; Digital Strategist</p>
+          <div class="pp-team-card-copy">
+            <h3 class="pp-team-card-name">Fabio</h3>
+            <p class="pp-team-card-bio">
+              Sviluppa strategie trasformando contenuti, dati e creatività in comunicazione chiara ed efficace. Definisce narrativa e piani editoriali, ottimizza i canali social e integra storytelling e dati per ottenere risultati misurabili.
+            </p>
+          </div>
         </div>
-    </article>
+      </article>
     </div>
     <div class="pp-spacer-top-80">
       <!-- CTA verso Toolkit (centrata) -->
@@ -455,8 +438,7 @@
             </div>
 
             <div class="pp-toolkit-text">
-            <p><em>Gli strumenti che danno forma alle nostre idee.</em></p>
-            <p>
+            <p class="pp-toolkit-description">
             Dal codice alla grafica, dal contenuto al prototipo: ogni progetto nasce dall’unione 
             di tool diversi ma guidati dalla stessa visione. 
             Tecnologie moderne, software professionali e una metodologia curata per creare 
