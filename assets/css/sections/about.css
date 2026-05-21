@@ -111,27 +111,35 @@
   display:block;
   margin-bottom:clamp(10px,1vw,16px);
 }
+.pp-quote-line--second{
+  display:inline-block;
+  padding-bottom:clamp(18px,1.8vw,30px);
+}
 .pp-quote-text > span:last-child{
   margin-bottom:0;
-  position:relative;
+  display:block;
+}
+.pp-quote-last{
   display:block;
 }
 .pp-quote-mark--end{
-  position:absolute;
-  transform:rotate(180deg);
-  right:0;
-  left:auto;
-  bottom:0;
-  margin:0;
+  position:relative;
+  display:inline-block;
+  top:clamp(18px,1.8vw,30px);
+  margin-left:.16em;
+  line-height:1;
+  transform:scaleX(-1);
 }
 
 @media (max-width:980px){
+  .pp-quote-line--second{
+    display:block;
+    padding-bottom:0;
+  }
   .pp-quote-mark--end{
     position:static;
-    left:auto;
-    bottom:auto;
-    display:inline;
-    margin-left:.15em;
+    margin-left:.12em;
+    top:auto;
   }
 }
 
