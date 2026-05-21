@@ -109,36 +109,49 @@
 }
 .pp-quote-text > span{
   display:block;
-  margin-bottom:clamp(10px,1vw,16px);
+  margin-bottom:clamp(2px,.25vw,5px);
 }
-.pp-quote-line--second{
+.pp-quote-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(2px,.25vw,5px);
+  width:max-content;
+}
+.pp-quote-stack > .pp-quote-line--second{
+  position:relative;
   display:inline-block;
-  padding-bottom:clamp(18px,1.8vw,30px);
+  width:max-content;
 }
 .pp-quote-text > span:last-child{
   margin-bottom:0;
   display:block;
 }
-.pp-quote-last{
+.pp-quote-row-third{
   display:block;
 }
+.pp-quote-last{ display:block; }
 .pp-quote-mark--end{
-  position:relative;
+  position:absolute;
   display:inline-block;
-  top:clamp(18px,1.8vw,30px);
-  margin-left:.16em;
+  left:calc(100% + .06em + 10px);
+  top:calc(100% + clamp(2px,.25vw,5px));
   line-height:1;
   transform:scaleX(-1);
 }
 
 @media (max-width:980px){
-  .pp-quote-line--second{
+  .pp-quote-stack{
     display:block;
-    padding-bottom:0;
+    width:auto;
+  }
+  .pp-quote-row-third{
+    display:block;
   }
   .pp-quote-mark--end{
     position:static;
     margin-left:.12em;
+    left:auto;
     top:auto;
   }
 }
