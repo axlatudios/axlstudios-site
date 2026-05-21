@@ -54,14 +54,14 @@ export function setupContactForm() {
       form.reset();
       show(okMessage, true);
       show(errorMessage, false);
-      const enhancedSelect = document.querySelector(".pp-sel__btn");
+      const enhancedSelect = form.querySelector(".pp-sel__btn");
       const defaultOption = form.querySelector("#c_servizio option[disabled]");
       if (enhancedSelect && defaultOption) {
         enhancedSelect.textContent = defaultOption.textContent || "Seleziona…";
       }
     } catch {
       if (errorMessage) {
-        errorMessage.textContent = "Invio non riuscito. Verifica la connessione o riprova piu tardi.";
+        errorMessage.textContent = "Invio non riuscito. Verifica la connessione o riprova più tardi.";
       }
       show(okMessage, false);
       show(errorMessage, true);

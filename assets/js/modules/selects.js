@@ -1,3 +1,5 @@
+const enhancedWraps = [];
+
 function enhanceSelect(select) {
   if (select.dataset.enhanced) {
     return;
@@ -63,27 +65,36 @@ function enhanceSelect(select) {
     wrap.setAttribute("aria-expanded", String(!isOpen));
   });
 
-  document.addEventListener("click", (event) => {
-    if (!wrap.contains(event.target)) {
-      wrap.dataset.open = "false";
-      wrap.setAttribute("aria-expanded", "false");
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      wrap.dataset.open = "false";
-      wrap.setAttribute("aria-expanded", "false");
-      button.focus();
-    }
-  });
-
   select.parentNode.insertBefore(wrap, select);
   wrap.appendChild(select);
+
+  enhancedWraps.push({ wrap, button });
 }
 
 export function setupSelects() {
   document
     .querySelectorAll("select.pp-select.pp-select--custom, select#c_servizio")
     .forEach(enhanceSelect);
+
+  document.addEventListener("click", (event) => {
+    enhancedWraps.forEach(({ wrap }) => {
+      if (!wrap.contains(event.target)) {
+        wrap.dataset.open = "false";
+        wrap.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+    enhancedWraps.forEach(({ wrap, button }) => {
+      if (wrap.dataset.open === "true") {
+        wrap.dataset.open = "false";
+        wrap.setAttribute("aria-expanded", "false");
+        button.focus();
+      }
+    });
+  });
 }

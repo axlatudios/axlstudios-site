@@ -50,6 +50,7 @@ export function setupFaq() {
       closeAll(toggle);
       toggle.setAttribute("aria-expanded", "true");
       panel.hidden = false;
+      setTimeout(() => panel.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50);
     }
   }
 }

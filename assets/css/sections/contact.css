@@ -351,7 +351,7 @@
   width:min(100%,var(--axl-form-max));
   margin-inline:auto;
   gap:16px;
-  margin-top:clamp(-32px,-32px,-32px);
+  margin-top:-32px;
 }
 #axlContactForm .pp-field--full,
 #axlContactForm .pp-form-foot,

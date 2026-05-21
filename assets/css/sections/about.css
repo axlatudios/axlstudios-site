@@ -119,7 +119,8 @@
 .pp-quote-mark--end{
   position:absolute;
   transform:rotate(180deg);
-  left:790px;
+  right:0;
+  left:auto;
   bottom:0;
   margin:0;
 }

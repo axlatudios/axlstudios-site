@@ -23,9 +23,8 @@
   color:#fff;
   font-family:"Urbanist";
   font-weight:600;
-  font-size:clamp(96px,12vw,208px);
+  font-size:clamp(77px,9.6vw,166px);
   line-height:1;
-  zoom: 0.8;
 }
 
 .pp-team-desc{
@@ -34,9 +33,8 @@
   color:#fff;
   font-family:"Urbanist";
   font-weight:600;
-  font-size:clamp(18px,2.4vw,32px);
+  font-size:clamp(14px,1.92vw,26px);
   line-height:1.2;
-  zoom: 0.8;
   padding-top: 4px;
 }
 

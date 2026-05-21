@@ -154,10 +154,16 @@ export function setupAdaptiveVideos({ prefersReducedMotion }) {
     });
   };
 
+  let scrollRaf = false;
+
   syncVideos();
   prefersReducedMotion.addEventListener("change", syncVideos);
   window.addEventListener("pageshow", retryPlayback);
-  window.addEventListener("scroll", retryPlayback, { passive: true });
+  window.addEventListener("scroll", () => {
+    if (scrollRaf) return;
+    scrollRaf = true;
+    requestAnimationFrame(() => { retryPlayback(); scrollRaf = false; });
+  }, { passive: true });
   document.addEventListener("pointerdown", retryPlayback, { passive: true });
   document.addEventListener("touchstart", retryPlayback, { passive: true });
   document.addEventListener("visibilitychange", () => {

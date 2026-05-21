@@ -99,27 +99,6 @@
   height:100%;
   display:flex;
   width:max-content;
-  will-change:transform;
-}
-
-.pp-services-track--marquee{
-  animation:pp-services-marquee var(--services-marquee-duration,46s) linear infinite;
-}
-
-.pp-services-track--manual{
-  animation:none !important;
-  transform:none !important;
-}
-
-.pp-services-viewport:hover .pp-services-track--marquee,
-.pp-services-track--paused,
-.pp-services-track--user-paused{
-  animation-play-state:paused;
-}
-
-@keyframes pp-services-marquee{
-  from{ transform:translate3d(0,0,0); }
-  to{ transform:translate3d(-50%,0,0); }
 }
 
 .pp-service{
@@ -220,7 +199,6 @@
 
 @media (prefers-reduced-motion:reduce){
   .pp-services-bg-video{ display:none; }
-  .pp-services-track--marquee{ animation:none; }
 }
 
 @media (min-width:1920px){
