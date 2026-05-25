@@ -145,7 +145,7 @@ export function setupServicesTrack({ prefersReducedMotion } = {}) {
   viewport.addEventListener("mousedown", (event) => {
     if (event.button !== 0) return;
     startDrag(event.clientX);
-  });
+  }); 
 
   window.addEventListener("mousemove", (event) => {
     moveDrag(event.clientX, event);

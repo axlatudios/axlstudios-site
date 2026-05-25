@@ -53,6 +53,7 @@
 .pp-team-card{
   --team-card-image:url("../../card_team_bg.png");
   --team-card-layer:url("../../prova_place-holder.webp");
+  --team-card-y:172%;
   width:100%;
   min-height:650px;
   padding:32px;
@@ -84,7 +85,7 @@
   background-image:var(--team-card-layer, none);
   background-repeat:no-repeat;
   background-size:78% auto;
-  background-position:center 250%;
+  background-position:center var(--team-card-y, 172%);
   background-origin:content-box;
   transition:background-size .24s ease;
 }
@@ -159,7 +160,18 @@
 }
 
 .pp-team-card--alfredo{
-  --team-card-layer:url("../../prova_place-holder.webp");
+  --team-card-layer:url("../../team_alfredo_png.png");
+  --team-card-y:50%;
+}
+
+.pp-team-card--lorenzo{
+  --team-card-layer:url("../../team_lorenzo_png.png");
+  --team-card-y:50%;
+}
+
+.pp-team-card--fabio{
+  --team-card-layer:url("../../team_fabio_png.png");
+  --team-card-y:50%;
 }
 
 .pp-team-card:hover{

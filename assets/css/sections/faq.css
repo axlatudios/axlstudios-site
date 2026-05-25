@@ -51,6 +51,9 @@
 .pp-faq-row{
   border-bottom:1px solid rgba(250,250,251,.42);
 }
+.pp-faq-row:last-child{
+  border-bottom:none;
+}
 
 .pp-faq-toggle{
   width:100%;
